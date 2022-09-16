@@ -7,27 +7,10 @@ CREATE TABLE pacientes (
     direccion varchar(200) COLLATE utf8_unicode_ci NOT NULL,
     ciudad varchar(50) COLLATE utf8_unicode_ci NOT NULL,
     barrio varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+    telefono varchar(40) NOT NULL,
     email varchar(50) COLLATE utf8_unicode_ci NOT NULL,
     PRIMARY KEY (id)
 )  ENGINE=InnoDB;
-
-CREATE TABLE telefono (
-    id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
-    telefono varchar(40) NOT NULL,
-    PRIMARY key(id),
-    id_paciente bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_paciente) REFERENCES pacientes(id)
-		ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
-
-CREATE TABLE correo (
-    id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
-    correo varchar(40) NOT NULL,
-    PRIMARY KEY(id),
-    id_paciente bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_paciente) REFERENCES pacientes(id)
-		ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
 
 CREATE TABLE ficha(
     id bigint(20) unsigned NOT NULL AUTO_INCREMENT,

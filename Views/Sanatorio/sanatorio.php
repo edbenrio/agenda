@@ -22,7 +22,7 @@
 						<h5 class="card-title"><?= $sanatorio["nombre"]; ?></h5>
 						<p><?= $sanatorio["mail"]; ?></p>
 						<p> <?= $sanatorio["direccion"].' - '. $sanatorio["ciudad"]; ?> </p>
-						<p> <?= $sanatorio["telefono"].' '.$sanatorio["celular"]; ?> </p>
+						<p> <?= $sanatorio["telefono"].' - '.$sanatorio["celular"]; ?> </p>
 						<button class="btn btn-primary" type="button" onclick='openModalSanatorioEditar(<?= $sanatorio["id"]?>)'><i class="fa fa-plus-circle"></i> Editar</button>
 						<button class="btn btn-danger" type="button" onclick='openModalSanatorioEliminar(<?= $sanatorio["id"]?>)'><i class="fa fa-plus-circle"></i> Eliminar</button>
 					</div>

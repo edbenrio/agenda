@@ -15,7 +15,7 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item" href="<?= base_url(); ?>clientes">
+            <a class="app-menu__item" href="<?= base_url(); ?>paciente">
             <i class="app-menu__icon fa fa-wheelchair" aria-hidden="true"></i><span class="app-menu__label">Pacientes</span>
             </a>
         </li>

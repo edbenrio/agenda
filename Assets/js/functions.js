@@ -21,35 +21,7 @@ function sanatorioNuevo(){
 		success: function(resultado){
 			if(resultado > 0){
                 $('#modalFormSanatorioNuevo').modal('hide');
-                /*let txtnombre = document.getElementById('txtnombre').value;
-                let txtdireccion = document.getElementById('txtdireccion').value;  
-                let txttelefono = document.getElementById('txttelefono').value; 
-                let txtcelular = document.getElementById('txtcelular').value; 
-                let txtciudad = document.getElementById('txtciudad').value; 
-                let txtcorreo = document.getElementById('txtcorreo').value; 
-
-                const div = document.createElement('div');
-
-                div.className = 'card text-center mx-2';
-
-                div.innerHTML = `
-                    <div class="card-body">
-                        <h5 class="card-title">`+ txtnombre  +`</h5>
-                        <p>` + txtcorreo +`</p>
-						<p> `+ txtdireccion + ` - ` + txtciudad + ` </p>
-						<p> `+ txttelefono + ` - ` + txtcelular + ` </p>
-						<a href="#" class="btn btn-primary">Editar</a>
-                    </div>
-                `;
-
-                document.getElementById('listaSanatorios').appendChild(div);
-                const inputs = document.querySelectorAll('#txtnombre, #txtdireccion, #txttelefono, #txtcelular, #txtciudad, #txtbarrio, #txtcorreo');
-                inputs.forEach(input => {
-                    input.value = '';
-                });*/
-
                 location.reload();
-
             }else{
                 alert('Error: ' + resultado);
             }
@@ -124,6 +96,119 @@ $("#formSanatorioEliminar").submit(function(event){
 function sanatorioEliminar(){
     let id = document.getElementById("hiddenIdEliminar").value;
     let url = "sanatorio/eliminar/"+ id;
+    $.ajax({
+        type: "post",
+        url: url,
+        success: function(resultado){
+            if(resultado > 0){
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+            }
+        }
+    })
+}
+
+/*** FUNCIONES PARA CREAR NUEVO PACIENTE ***/
+function openModalPacienteNuevo(){
+    $('#modalFormPacienteNuevo').modal('show');
+}
+
+function cerrarModalPacienteNuevo(){
+    $('#modalFormPacienteNuevo').modal('hide');
+}
+
+$("#formPacienteNuevo").submit(function(event){
+	event.preventDefault();
+	pacienteNuevo();
+});
+
+function pacienteNuevo(){
+	var datos = $("#formPacienteNuevo").serialize();
+	$.ajax({
+		type: "post",
+		url:"paciente/insertar",
+		data: datos,
+		success: function(resultado){
+			if(resultado > 0){
+                $('#modalFormPacienteNuevo').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+                console.log(resultado);
+            }
+		}
+	});
+}
+
+/*** FUNCIONES PARA EDITAR PACIENTE *****/
+function openModalPacienteEditar(id){
+    $('#modalFormPacienteEditar').modal('show');
+    let url = "paciente/verpaciente/"+id;
+    $.ajax({
+		type: "post",
+		url: url,
+        dataType:"json",
+		success: function(resultado){
+			document.getElementById('txtnombreEditar').value = resultado.nombre;
+            document.getElementById('txtapellidoEditar').value = resultado.apellido;
+            document.getElementById('txtdireccionEditar').value = resultado.direccion;  
+            document.getElementById('txttelefonoEditar').value = resultado.telefono; 
+            document.getElementById('txtbarrioEditar').value = resultado.barrio; 
+            document.getElementById('txtciudadEditar').value = resultado.ciudad; 
+            document.getElementById('txtestadoEditar').value = resultado.estado; 
+            document.getElementById('txtcorreoEditar').value = resultado.email; 
+            document.getElementById('hiddenidEditar').value = resultado.id;         
+        }
+	});
+}
+
+function cerrarModalPacienteEditar(){
+    $('#modalFormPacienteEditar').modal('hide');
+}
+
+$("#formPacienteEditar").submit(function(event){
+	event.preventDefault();
+	pacienteEditar();
+});
+
+function pacienteEditar(){
+	var datos = $("#formPacienteEditar").serialize();
+	$.ajax({
+		type: "post",
+		url:"paciente/actualizar",
+		data: datos,
+		success: function(resultado){
+			if(resultado > 0){
+                $('#modalFormPacienteEditar').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+                console.log( resultado);
+            }
+		}
+	});
+} 
+
+/*** FUNCIONES PARA ELIMINAR PACIENTE */
+function openModalPacienteEliminar(id){
+    $('#modalFormPacienteEliminar').modal('show');
+    document.getElementById('hiddenIdEliminar').value = id;
+    //document.getElementById('hiddenidEliminar').value = id;
+}
+
+function cerrarModalPacienteEliminar(){
+    $('#modalFormPacienteEliminar').modal('hide');
+}
+
+$("#formPacienteEliminar").submit(function(event){
+	event.preventDefault();
+	pacienteEliminar();
+});
+
+function pacienteEliminar(){
+    let id = document.getElementById("hiddenIdEliminar").value;
+    let url = "paciente/eliminar/"+ id;
     $.ajax({
         type: "post",
         url: url,
