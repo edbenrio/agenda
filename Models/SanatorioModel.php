@@ -16,12 +16,15 @@
         public function getSanatorio(string $id){
             $query = "SELECT * FROM sanatorio WHERE id =".$id." LIMIT 1" ;
             $result = $this->select($query);
-            print_r($result) ;
+            return $result ;
         }
 
-        public function updateSanatorio(int $id, string $nombre, int $edad){   
-            $sql = "UPDATE sanatorio SET nombre= ?, edad= ? WHERE id=". $id;
-            $arrData = array($nombre, $edad);
+        public function updateSanatorio(array $sanatorio, int $id){   
+            $sql = "UPDATE sanatorio SET nombre = ?, direccion = ?, ciudad = ?, barrio = ?, telefono = ?, celular = ?, mail = ? WHERE id =". $id;
+        
+            $arrData = array( $sanatorio["txtnombreEditar"], $sanatorio["txtdireccionEditar"], $sanatorio["txtciudadEditar"], 
+                $sanatorio["txtbarrioEditar"], $sanatorio["txttelefonoEditar"],  $sanatorio["txtcelularEditar"], $sanatorio["txtcorreoEditar"],  
+            );
             $result = $this->update($sql, $arrData);
             return $result;
         }

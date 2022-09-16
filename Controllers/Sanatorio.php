@@ -31,26 +31,42 @@
 
         public function versanatorio($id){
             $data = $this->model->getSanatorio($id);
-            $sanatorio = new stdClass;
-            foreach ($data as $key => $value){
-                $sanatorio->$key = $value;
-            }
-            return $sanatorio; //TODO: SOLUCIONAR ESTO 
+            $data = json_encode($data[0]);
+            echo ($data);
             
         }
         
         public function actualizar(){
-            $data = $this->model->updateUser(1, "Roberto", 23);
+            $error = false;
+            
+            empty($_POST["txtnombreEditar"]) ? $error = true : $sanatorio["txtnombreEditar"] = $_POST["txtnombreEditar"] ;
+            empty($_POST["txtcorreoEditar"]) ? $error = true : $sanatorio["txtcorreoEditar"] = $_POST["txtcorreoEditar"] ;
+            empty($_POST["txtdireccionEditar"]) ? $error = true : $sanatorio["txtdireccionEditar"] = $_POST["txtdireccionEditar"] ;
+            empty($_POST["txtciudadEditar"]) ? $error = true : $sanatorio["txtciudadEditar"] = $_POST["txtciudadEditar"] ;
+            empty($_POST["txtbarrioEditar"]) ? $error = true : $sanatorio["txtbarrioEditar"] = $_POST["txtbarrioEditar"] ;
+            empty($_POST["txttelefonoEditar"]) ? $error = true : $sanatorio["txttelefonoEditar"] = $_POST["txttelefonoEditar"] ;
+            empty($_POST["txtcelularEditar"]) ? $error = true : $sanatorio["txtcelularEditar"] = $_POST["txtcelularEditar"] ;
+
+            $id = 0;
+            empty($_POST["hiddenIdEditar"]) ? $id = 0 : $id = $_POST["hiddenIdEditar"];
+
+            if ($id == 0) echo "Error en el id al editar";
+
+            if ($error){
+                echo "Se deben completar todos los campos";
+            }else{
+                $data = $this->model->updateSanatorio($sanatorio, $id);
+                echo $data;
+            }
+        }
+
+        public function versanatorios(){
+            $data = $this->model->getSanatorios();
             print_r($data);
         }
 
-        public function verusuarios(){
-            $data = $this->model->getUsers();
-            print_r($data);
-        }
-
-        public function eliminarusuario($id){
-            $data = $this->model->deleteUser($id);
-            print_r($data);
+        public function eliminar($id){
+            $data = $this->model->deleteSanatorio($id);
+            echo ($data);
         }
     }

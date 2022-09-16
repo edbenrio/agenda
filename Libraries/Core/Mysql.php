@@ -28,7 +28,7 @@
             $this->strquery = $query;
             $result = $this->conexion->prepare($this->strquery);
             $result->execute();
-            $data = $result->fetch(PDO::FETCH_ASSOC);
+            $data = $result->fetchall(PDO::FETCH_ASSOC);
             return $data;
         }
 

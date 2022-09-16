@@ -4,8 +4,7 @@
     <script src= "<?= media();?>/js/popper.min.js"></script>
     <script src= "<?= media();?>/js/bootstrap.min.js"></script>
     <script src= "<?= media();?>/js/main.js"></script>
-    <script src= "<?= media();?>/js/function_roles.js"></script>
+    <script src= "<?= media();?>/js/functions.js"></script>
 
-    </script>
   </body>
 </html>
