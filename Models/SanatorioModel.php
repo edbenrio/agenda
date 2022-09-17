@@ -43,7 +43,7 @@
 
         public function ultimoIdAgenda(){
             $sql = "SELECT id FROM agenda ORDER BY id DESC LIMIT 1";
-            $result = $this->eliminar($sql);
+            $result = $this->getLast($sql);
             return $result;
         }
 

@@ -210,16 +210,17 @@ function asistenteNuevo(){
 	var datos = $("#formAsistenteNuevo").serialize();
 	$.ajax({
 		type: "post",
-		url:"paciente/insertar",
+		url:"asistente/insertar",
 		data: datos,
 		success: function(resultado){
-			if(resultado > 0){
+            console.log(resultado);
+			/*if(resultado > 0){
                 $('#modalFormAsistenteNuevo').modal('hide');
                 location.reload();
             }else{
                 alert('Error: ' + resultado);
                 console.log(resultado);
-            }
+            }*/
 		}
 	});
 }

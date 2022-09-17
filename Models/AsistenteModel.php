@@ -5,10 +5,13 @@
         }
 
         public function setAsistente(array $asistente){
-            $query_insert = "INSERT INTO secretaria (nombre, apellido, email, direccion, ciudad, barrio, telefono, estado) VALUES(?,?,?,?,?,?,?,?)";
-            $arrData = array( $asistente["txtnombre"],$asistente["txtapellido"] , $asistente["txtcorreo"], $asistente["txtdireccion"], 
-                                $asistente["txtciudad"], $asistente["txtbarrio"], $asistente["txttelefono"], $asistente["txtestado"]);
-            $request_insert = $this->insert($query_insert, $arrData);
+            $agendaId = $this->ultimoIdAgenda();
+            $profesionalId = $this->ultimoIdProfesional();
+            $query_insert = "INSERT INTO secretaria (nombre, apellido, estado, id_agenda, id_profesional) VALUES(?,?,?,?,?)";
+            array_push($asistente, $agendaId, $profesionalId);
+            //$arrData = array( $asistente["txtnombre"],$asistente["txtapellido"] , $asistente["txtcorreo"], $asistente["txtdireccion"], 
+                                //$asistente["txtciudad"], $asistente["txtbarrio"], $asistente["txttelefono"], $asistente["txtestado"]);
+            $request_insert = $this->insert($query_insert, $asistente);
             return $request_insert;
         }
 
@@ -41,7 +44,13 @@
 
         public function ultimoIdAgenda(){
             $sql = "SELECT id FROM agenda ORDER BY id DESC LIMIT 1";
-            $result = $this->eliminar($sql);
+            $result = $this->getLast($sql);
+            return $result;
+        }
+
+        public function ultimoIdProfesional(){
+            $sql = "SELECT id FROM profesional ORDER BY id DESC LIMIT 1";
+            $result = $this->getLast($sql);
             return $result;
         }
 
