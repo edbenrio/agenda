@@ -51,7 +51,7 @@
                     </div>
                     <input class="hiddenIdEditar" type="hidden" id="hiddenidEditar" name="hiddenIdEditar"  >
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="cerrarModalPacienteEditar()" data-bs-dismiss="modalFormPacienteEditar">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" onclick="setModal('modalFormPacienteEditar','hide')" data-bs-dismiss="modalFormPacienteEditar">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>

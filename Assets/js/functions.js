@@ -1,10 +1,7 @@
 /*** FUNCIONES PARA CREAR NUEVO SANATORIO ***/
-function openModalSanatorioNuevo(){
-    $('#modalFormSanatorioNuevo').modal('show');
-}
 
-function cerrarModalSanatorioNuevo(){
-    $('#modalFormSanatorioNuevo').modal('hide');
+function setModal(modal, opcion){
+    $('#'+modal).modal(opcion);
 }
 
 $("#formSanatorioNuevo").submit(function(event){
@@ -51,10 +48,6 @@ function openModalSanatorioEditar(id){
 	});
 }
 
-function cerrarModalSanatorioEditar(){
-    $('#modalFormSanatorioEditar').modal('hide');
-}
-
 $("#formSanatorioEditar").submit(function(event){
 	event.preventDefault();
 	sanatorioEditar();
@@ -84,10 +77,6 @@ function openModalSanatorioEliminar(id){
     //document.getElementById('hiddenidEliminar').value = id;
 }
 
-function cerrarModalSanatorioEliminar(){
-    $('#modalFormSanatorioEliminar').modal('hide');
-}
-
 $("#formSanatorioEliminar").submit(function(event){
 	event.preventDefault();
 	sanatorioEliminar();
@@ -110,14 +99,6 @@ function sanatorioEliminar(){
 }
 
 /*** FUNCIONES PARA CREAR NUEVO PACIENTE ***/
-function openModalPacienteNuevo(){
-    $('#modalFormPacienteNuevo').modal('show');
-}
-
-function cerrarModalPacienteNuevo(){
-    $('#modalFormPacienteNuevo').modal('hide');
-}
-
 $("#formPacienteNuevo").submit(function(event){
 	event.preventDefault();
 	pacienteNuevo();
@@ -142,7 +123,7 @@ function pacienteNuevo(){
 }
 
 /*** FUNCIONES PARA EDITAR PACIENTE *****/
-function openModalPacienteEditar(id){
+function openModalPacienteEditar(id){ //no eliminar
     $('#modalFormPacienteEditar').modal('show');
     let url = "paciente/verpaciente/"+id;
     $.ajax({
@@ -161,10 +142,6 @@ function openModalPacienteEditar(id){
             document.getElementById('hiddenidEditar').value = resultado.id;         
         }
 	});
-}
-
-function cerrarModalPacienteEditar(){
-    $('#modalFormPacienteEditar').modal('hide');
 }
 
 $("#formPacienteEditar").submit(function(event){
@@ -191,14 +168,10 @@ function pacienteEditar(){
 } 
 
 /*** FUNCIONES PARA ELIMINAR PACIENTE */
-function openModalPacienteEliminar(id){
+function openModalPacienteEliminar(id){ //no eliminar
     $('#modalFormPacienteEliminar').modal('show');
     document.getElementById('hiddenIdEliminar').value = id;
     //document.getElementById('hiddenidEliminar').value = id;
-}
-
-function cerrarModalPacienteEliminar(){
-    $('#modalFormPacienteEliminar').modal('hide');
 }
 
 $("#formPacienteEliminar").submit(function(event){
@@ -226,10 +199,6 @@ function pacienteEliminar(){
 /*** FUNCIONES PARA CREAR NUEVO ASISTENTE ***/
 function openModalAsistenteNuevo(){
     $('#modalFormAsistenteNuevo').modal('show');
-}
-
-function cerrarModalAsistenteNuevo(){
-    $('#modalFormAsistenteNuevo').modal('hide');
 }
 
 $("#formAsistenteNuevo").submit(function(event){

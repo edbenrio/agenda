@@ -3,7 +3,7 @@
 	<div class="app-title">
 		<div>
 			<h1>
-				<i class="fa fa-hospital-o" aria-hidden="true"></i> Asistente <button class="btn btn-primary" type="button" onclick="openModalAsistenteNuevo()"><i class="fa fa-plus-circle"></i> Nuevo</button>
+				<i class="fa fa-hospital-o" aria-hidden="true"></i> Asistente <button class="btn btn-primary" type="button" onclick="setModal('modalFormAsistenteNuevo','show')"><i class="fa fa-plus-circle"></i> Nuevo</button>
 			</h1>
 			
 			<!-- <p>Start a beautiful journey here</p> -->

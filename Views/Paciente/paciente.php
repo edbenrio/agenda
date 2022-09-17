@@ -3,7 +3,7 @@
 	<div class="app-title">
 		<div>
 			<h1>
-				<i class="fa fa-hospital-o" aria-hidden="true"></i> Pacientes <button class="btn btn-primary" type="button" onclick="openModalPacienteNuevo()"><i class="fa fa-plus-circle"></i> Nuevo</button>
+				<i class="fa fa-hospital-o" aria-hidden="true"></i> Pacientes <button class="btn btn-primary" type="button" onclick="setModal('modalFormPacienteNuevo','show')"><i class="fa fa-plus-circle"></i> Nuevo</button>
 			</h1>
 			
 			<!-- <p>Start a beautiful journey here</p> -->

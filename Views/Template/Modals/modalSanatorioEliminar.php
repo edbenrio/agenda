@@ -9,7 +9,7 @@
                    <p>¿Eliminar este sanatorio?</p>
                    <input class="hiddenIdEliminar" type="hidden" id="hiddenIdEliminar" name="hiddenIdEliminar"  >
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="cerrarModalSanatorioEliminar()">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" onclick="setModal('modalFormSanatorioEliminar','hide')">Cancelar</button>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </div>
                 </form>

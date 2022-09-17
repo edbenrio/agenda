@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="cerrarModalPacienteNuevo()" data-bs-dismiss="modalFormPacienteNuevo">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" onclick="setModal('modalFormPacienteNuevo','hide')" data-bs-dismiss="modalFormPacienteNuevo">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
