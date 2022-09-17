@@ -4,8 +4,8 @@
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?=media();?>/images/uploads/avatar.png"
             alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">John Doe</p>
-            <p class="app-sidebar__user-designation">Frontend Developer</p>
+            <p class="app-sidebar__user-name">Juan Gonzalez</p>
+            <p class="app-sidebar__user-designation">Médico Cirujano</p>
         </div>
     </div>
     <ul class="app-menu">
@@ -25,8 +25,13 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item" href="<?= base_url(); ?>Sanatorio">
+            <a class="app-menu__item" href="<?= base_url(); ?>sanatorio">
                 <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Sanatorios</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>asistente">
+                <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Asistentes</span>
             </a>
         </li>
     </ul>
