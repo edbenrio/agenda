@@ -9,8 +9,6 @@
             $profesionalId = $this->ultimoIdProfesional();
             $query_insert = "INSERT INTO secretaria (nombre, apellido, estado, id_agenda, id_profesional) VALUES(?,?,?,?,?)";
             array_push($asistente, $agendaId, $profesionalId);
-            //$arrData = array( $asistente["txtnombre"],$asistente["txtapellido"] , $asistente["txtcorreo"], $asistente["txtdireccion"], 
-                                //$asistente["txtciudad"], $asistente["txtbarrio"], $asistente["txttelefono"], $asistente["txtestado"]);
             $request_insert = $this->insert($query_insert, $asistente);
             return $request_insert;
         }
@@ -22,11 +20,8 @@
         }
 
         public function updateAsistente(array $asistente, int $id){   
-            $sql = "UPDATE secretaria SET nombre = ?, apellido = ?, email = ? ,direccion = ?, ciudad = ?, barrio = ?, telefono = ?, estado = ? WHERE id =". $id;
-        
-            $arrData = array( $asistente["txtnombreEditar"],$asistente["txtapellidoEditar"] , $asistente["txtcorreoEditar"], $asistente["txtdireccionEditar"], 
-                $asistente["txtciudadEditar"], $asistente["txtbarrioEditar"], $asistente["txttelefonoEditar"], $asistente["txtestadoEditar"]);
-            $result = $this->update($sql, $arrData);
+            $sql = "UPDATE secretaria SET nombre = ?, apellido = ?, estado = ? WHERE id =". $id;
+            $result = $this->update($sql, $asistente);
             return $result;
         }
 

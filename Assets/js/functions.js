@@ -214,13 +214,81 @@ function asistenteNuevo(){
 		data: datos,
 		success: function(resultado){
             console.log(resultado);
-			/*if(resultado > 0){
+			if(resultado > 0){
                 $('#modalFormAsistenteNuevo').modal('hide');
                 location.reload();
             }else{
                 alert('Error: ' + resultado);
                 console.log(resultado);
-            }*/
+            }
 		}
 	});
+}
+
+/*** FUNCIONES PARA EDITAR ASISTENTE *****/
+function openModalAsistenteEditar(id){ //no eliminar
+    $('#modalFormAsistenteEditar').modal('show');
+    let url = "asistente/verasistente/"+id;
+    $.ajax({
+		type: "post",
+		url: url,
+        dataType:"json",
+		success: function(resultado){
+			document.getElementById('txtnombreEditar').value = resultado.nombre;
+            document.getElementById('txtapellidoEditar').value = resultado.apellido; 
+            document.getElementById('txtestadoEditar').value = resultado.estado; 
+            document.getElementById('hiddenidEditar').value = resultado.id;         
+        }
+	});
+}
+
+$("#formAsistenteEditar").submit(function(event){
+	event.preventDefault();
+	asistenteEditar();
+});
+
+function asistenteEditar(){
+	var datos = $("#formAsistenteEditar").serialize();
+	$.ajax({
+		type: "post",
+		url:"asistente/actualizar",
+		data: datos,
+		success: function(resultado){
+			if(resultado > 0){
+                $('#modalFormPacienteEditar').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+                console.log( resultado);
+            }
+		}
+	});
+} 
+
+/*** FUNCIONES PARA ELIMINAR ASISTENTE */
+function openModalAsistenteEliminar(id){ //no eliminar
+    $('#modalFormAsistenteEliminar').modal('show');
+    document.getElementById('hiddenIdEliminar').value = id;
+    //document.getElementById('hiddenidEliminar').value = id;
+}
+
+$("#formAsistenteEliminar").submit(function(event){
+	event.preventDefault();
+	asistenteEliminar();
+});
+
+function asistenteEliminar(){
+    let id = document.getElementById("hiddenIdEliminar").value;
+    let url = "asistente/eliminar/"+ id;
+    $.ajax({
+        type: "post",
+        url: url,
+        success: function(resultado){
+            if(resultado > 0){
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+            }
+        }
+    })
 }
