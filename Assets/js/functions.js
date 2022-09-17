@@ -221,3 +221,36 @@ function pacienteEliminar(){
         }
     })
 }
+
+
+/*** FUNCIONES PARA CREAR NUEVO ASISTENTE ***/
+function openModalAsistenteNuevo(){
+    $('#modalFormAsistenteNuevo').modal('show');
+}
+
+function cerrarModalAsistenteNuevo(){
+    $('#modalFormAsistenteNuevo').modal('hide');
+}
+
+$("#formAsistenteNuevo").submit(function(event){
+	event.preventDefault();
+	asistenteNuevo();
+});
+
+function asistenteNuevo(){
+	var datos = $("#formAsistenteNuevo").serialize();
+	$.ajax({
+		type: "post",
+		url:"paciente/insertar",
+		data: datos,
+		success: function(resultado){
+			if(resultado > 0){
+                $('#modalFormAsistenteNuevo').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+                console.log(resultado);
+            }
+		}
+	});
+}

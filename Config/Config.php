@@ -1,6 +1,6 @@
 <?php
 
-    const BASE_URL = "http://localhost/katherina/";
+    const BASE_URL = "http://localhost/agenda/";
     date_default_timezone_set("America/Asuncion");
 
     //Datos de conexion a la base de datos 

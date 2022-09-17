@@ -21,5 +21,6 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
+	<?php getModal("modalAsistenteNuevo", $data) ?>
 </main>
 <?php footerAdmin(); ?>
