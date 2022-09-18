@@ -32,6 +32,16 @@
             return $data;
         }
 
+        //DEVOLVER SI EXISTE UN REGISTRO EN LA TABLE
+
+        public function getExists(string $query){
+            $this->strquery = $query;
+            $result = $this->conexion->prepare($this->strquery);
+            $result->execute();
+            $data = $result->fetchColumn();
+            return $data;
+        }
+
         //Devolver todos los registros 
         public function select_all(string $query){
             $this->strquery = $query;

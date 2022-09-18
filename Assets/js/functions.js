@@ -1,5 +1,28 @@
-/*** FUNCIONES PARA CREAR NUEVO SANATORIO ***/
+/** PRIMER INICIO */
+$("#formPrimerInicio").submit(function(event){
+	event.preventDefault();
+	PrimerInicio();
+});
 
+function PrimerInicio(){
+	var datos = $("#formPrimerInicio").serialize();
+    console.log(datos);
+	$.ajax({
+		type: "post",
+		url:"registrar/insertar",
+		data: datos,
+		success: function(resultado){
+			if(resultado > 0){
+                $('#modalFormSanatorioNuevo').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+            }
+		}
+	});
+}
+
+/*** FUNCIONES PARA CREAR NUEVO SANATORIO ***/
 function setModal(modal, opcion){
     $('#'+modal).modal(opcion);
 }

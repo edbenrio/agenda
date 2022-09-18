@@ -1,3 +1,10 @@
+CREATE TABLE usuario (
+    id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
+    nombre varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+    contrasena varchar(50),
+    rol varchar(12),
+    PRIMARY KEY (id)
+)  ENGINE=InnoDB;
 
 CREATE TABLE pacientes (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
@@ -30,7 +37,9 @@ CREATE TABLE profesional (
     estado varchar(45) COLLATE utf8_unicode_ci NOT NULL,
     correo varchar(45) COLLATE utf8_unicode_ci NOT NULL,
     telefono varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    id_usuario bigint(20) unsigned NOT NULL,
+    FOREIGN KEY(id_usuario) REFERENCES usuario(id)
 )  ENGINE=InnoDB;
 
 CREATE TABLE agenda (
@@ -86,7 +95,9 @@ CREATE TABLE secretaria(
          ON DELETE CASCADE ON UPDATE CASCADE,
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)
-         ON DELETE CASCADE ON UPDATE CASCADE
+         ON DELETE CASCADE ON UPDATE CASCADE,
+    id_usuario bigint(20) unsigned NOT NULL,
+    FOREIGN KEY(id_usuario) REFERENCES usuario(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE consulta(

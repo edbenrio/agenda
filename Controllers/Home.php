@@ -5,10 +5,16 @@
         }
 
         public function home(){
-            $data["tag_page"] = "Home";
-            $data["page_title"] = "Titulo de la página";
-            $data["page_name"] = "home";
-            $this->views->getView($this, "home", $data);
+            $result = $this->model->getExtistsProfesional();
+            if ($result == 0){
+                $view = "Views/Registrar/registrar.php";
+                
+            }else{
+                $view = "Views/Dashboard/dashboard.php";
+                $data = $this->model->getSanatorios();
+                //$this->views->getView($this, "dashboard", $sanatorio);
+            }
+            require_once($view);
         }
 
         public function insertar(){

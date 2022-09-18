@@ -36,4 +36,16 @@
             return $result;
         }
 
+        public function getExtistsProfesional(){
+            $sql = 'SELECT COUNT(*) AS count FROM profesional';
+            $result = $this->getExists($sql);
+            return $result;
+        }
+
+        public function getSanatorios(){
+            $sql = "SELECT * FROM sanatorio";
+            $result = $this->select_all($sql);
+            return $result;
+        }
+
     }
