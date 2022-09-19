@@ -64,4 +64,10 @@
             $result = $this->getLast($sql);
             return $result;
         }
+
+        public function ultimoIdProfesional(){
+            $sql = "SELECT id FROM profesional ORDER BY id DESC LIMIT 1";
+            $result = $this->getLast($sql);
+            return $result;
+        }
     }
