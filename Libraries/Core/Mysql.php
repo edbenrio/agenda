@@ -32,6 +32,15 @@
             return $data;
         }
 
+        //buscar registro
+        public function getOne(string $query){
+            $this->strquery = $query;
+            $result = $this->conexion->prepare($this->strquery);
+            $result->execute();
+            $data = $result->fetch(PDO::FETCH_OBJ);
+            return $data;
+        }
+
         //DEVOLVER SI EXISTE UN REGISTRO EN LA TABLE
 
         public function getExists(string $query){

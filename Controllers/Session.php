@@ -17,10 +17,12 @@ class Session{
                 header("Location: ".base_url()."login");
                 die();
             }
+        }else{
+            return true;
         }
     }
     
-    public function logOut(){
+    public function logout(){
         session_destroy();
         header("Location: ".base_url());
         die();
@@ -28,6 +30,6 @@ class Session{
 
     public function newSession(array $user){
         $_SESSION["usuario"] = $user[0];
-        $_SESSION["rol"] = $user[1];
+        $_SESSION["rol"] = $user[2];
     }
 }

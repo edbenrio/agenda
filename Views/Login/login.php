@@ -20,20 +20,21 @@
         <h1>Agenda Médica</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="index.html">
+        <form id="formLogin" class="login-form">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Iniciar Sesión</h3>
           <div class="form-group">
             <label class="control-label">Usuario</label>
-            <input class="form-control" type="text" placeholder="Usuario" autofocus>
+            <input class="form-control" type="text" id="txtusuario" name="txtusuario" placeholder="Usuario" autofocus>
           </div>
           <div class="form-group">
             <label class="control-label">Contraseña</label>
-            <input class="form-control" type="contrasena" placeholder="Contraseña">
+            <input class="form-control" type="password" id="txtcontrasena" name="txtcontrasena" placeholder="Contraseña">
           </div>
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>Iniciar Sesión</button>
           </div>
         </form>
+        <div id="error"></div>
       </div>
     </section>
     <?php footerAdmin(); ?>

@@ -21,6 +21,29 @@ function PrimerInicio(){
 	});
 }
 
+/** LOGIN */
+$("#formLogin").submit(function(event){
+	event.preventDefault();
+	login();
+});
+
+function login(){
+    var datos = $("#formLogin").serialize();
+	$.ajax({
+		type: "post",
+		url:"login/nuevasession",
+		data: datos,
+		success: function(resultado){
+			if(resultado == true){
+                window.location.replace("dashboard");
+            }else{
+                alert('Error: ' + resultado);
+                console.log(resultado);
+            }
+		}
+	});
+}
+
 /*** FUNCIONES PARA CREAR NUEVO SANATORIO ***/
 function setModal(modal, opcion){
     $('#'+modal).modal(opcion);

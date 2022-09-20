@@ -5,11 +5,7 @@
         }
 
         public function registrar(){
-            if(empty($_SESSION["usuario"])){
-                header("Location: ".base_url());
-            }else{
-                $this->views->getView($this, "registrar");
-            }
+            $this->views->getView($this, "registrar");
         }
 
         public function insertar(){
@@ -36,7 +32,8 @@
                     array_push($profesional, $idUsuario);
                     $profesional = $this->model->crearProfesional($profesional);
                     if($profesional > 0){
-                        $profesional = $this->model->crearAgenda($profesional);                        
+                        $profesional = $this->model->crearAgenda($profesional);  
+                        array_push($usuario, "doctor");                    
                         require_once('Controllers/Session.php');
                         $session = new Session();
                         $session->newSession($usuario);

@@ -8,15 +8,27 @@
             $this->views->getView($this, "login");
         }
 
-        public function cerrarSession(){
-            require_once('Controllers/Session.php');
+        public function cerrarsession(){
             $session = new Session();
             $session->logOut();
         }
 
-        public function nuevaSession(){
-            require_once('Controllers/Session.php');
-            $session = new Session();
-            $session->newSession($user);
+        public function nuevasession(){
+            $nombre = $_POST["txtusuario"];
+            $usuario = $this->model->getUser($nombre);
+            if ($usuario){
+                if($_POST["txtcontrasena"] == $usuario->contrasena){
+                    $user = array();
+                    array_push($user, $usuario->nombre, $usuario->contrasena, $usuario->rol);
+                    require_once('Controllers/Session.php');
+                    $session = new Session();
+                    $session->newSession($user);
+                    echo true;
+                }else{
+                    echo 'Contraseña incorrecta';
+                }
+            }else{
+                echo 'No existe el usuario';
+            }
         }
     }
