@@ -11,6 +11,7 @@
 		</ul>
 	</div>
 	<div class="row min-vh-100 d-flex align-items-center justify-content-center ">
+		<h1><?= $_SESSION["usuario"] ?></h1>
 		<?php foreach ($data as $sanatorio): ?>
 			<div class="card text-center mx-2" >
 				<div class="card-body">

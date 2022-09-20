@@ -5,8 +5,11 @@
         }
 
         public function registrar(){
-            //$paciente = $this->model->getpacientes();
-            $this->views->getView($this, "registrar");
+            if(empty($_SESSION["usuario"])){
+                header("Location: ".base_url());
+            }else{
+                $this->views->getView($this, "registrar");
+            }
         }
 
         public function insertar(){
@@ -23,18 +26,22 @@
             empty($_POST["txtcorreo"]) ? $error = true : array_push($profesional, $_POST["txtcorreo"]);
             empty($_POST["txttelefono"]) ? $error = true : array_push($profesional, $_POST["txttelefono"]);
 
+            $estado = false;
+            
             if ($error){
                 echo "Se deben completar todos los campos";
             }else{
-                $usuario = $this->model->crearUsuario($usuario);
-                echo $usuario;
-                if($usuario > 0){
-                    array_push($profesional, $usuario);
+                $idUsuario = $this->model->crearUsuario($usuario);
+                if($idUsuario > 0){
+                    array_push($profesional, $idUsuario);
                     $profesional = $this->model->crearProfesional($profesional);
-                    echo $profesional;
                     if($profesional > 0){
-                        $profesional = $this->model->crearAgenda($profesional);
-                        echo $profesional;
+                        $profesional = $this->model->crearAgenda($profesional);                        
+                        require_once('Controllers/Session.php');
+                        $session = new Session();
+                        $session->newSession($usuario);
+                        $estado = true;
+                        echo $estado;
                     }
                 }
             }

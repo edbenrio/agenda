@@ -6,17 +6,16 @@ $("#formPrimerInicio").submit(function(event){
 
 function PrimerInicio(){
 	var datos = $("#formPrimerInicio").serialize();
-    console.log(datos);
 	$.ajax({
 		type: "post",
 		url:"registrar/insertar",
 		data: datos,
 		success: function(resultado){
-			if(resultado > 0){
-                $('#modalFormSanatorioNuevo').modal('hide');
-                location.reload();
+			if(resultado == true){
+                window.location.replace("dashboard");
             }else{
                 alert('Error: ' + resultado);
+                console.log(resultado);
             }
 		}
 	});
