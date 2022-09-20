@@ -14,16 +14,32 @@
             
             $error= false;
             $asistente = array();
+            $usuario = array();
 
             empty($_POST["txtnombre"]) ? $error = true : array_push($asistente, $_POST["txtnombre"]);
             empty($_POST["txtapellido"]) ? $error = true : array_push($asistente, $_POST["txtapellido"]);
             empty($_POST["txtestado"]) ? $error = true : array_push($asistente, $_POST["txtestado"]);
-           
+
+            empty($_POST["txtusuario"]) ? $error = true : array_push($usuario, strClean($_POST["txtusuario"]));
+            empty($_POST["txtcontrasena"]) ? $error = true : array_push($usuario, strClean($_POST["txtcontrasena"]));
+
             if ($error){
                 echo "Se deben completar todos los campos";
             }else{
-                $resultado = $this->model->setAsistente($asistente);
-                echo $resultado;
+                $existeUsuario = $this->model->getExtistsUser($usuario[0]);
+                if ($existeUsuario == 0){
+                    array_push($usuario, "asistente");
+                    $resultado = $this->model->crearUsuario($usuario);
+                    if ($resultado != 0){
+                        array_push($asistente, $resultado);
+                        $resultado = $this->model->setAsistente($asistente);
+                        echo true;
+                    }else{
+                        echo $resultado;
+                    }
+                }else{
+                    echo 'El nombre de Usuario ya existe';
+                }  
             }
         }
 

@@ -253,7 +253,11 @@ $("#formAsistenteNuevo").submit(function(event){
 
 function asistenteNuevo(){
 	var datos = $("#formAsistenteNuevo").serialize();
-	$.ajax({
+    let contrasena = document.getElementById("txtcontrasena").value;
+    let verify = document.getElementById("txtcontrasenaverify").value;
+    console.log(contrasena+' '+verify);
+    if (contrasena == verify){
+        	$.ajax({
 		type: "post",
 		url:"asistente/insertar",
 		data: datos,
@@ -268,6 +272,10 @@ function asistenteNuevo(){
             }
 		}
 	});
+    }else{
+        alert('Las contraseñas no coinciden');
+    }
+
 }
 
 /*** FUNCIONES PARA EDITAR ASISTENTE *****/

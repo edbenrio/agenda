@@ -7,7 +7,7 @@
         public function setAsistente(array $asistente){
             $agendaId = $this->ultimoIdAgenda();
             $profesionalId = $this->ultimoIdProfesional();
-            $query_insert = "INSERT INTO secretaria (nombre, apellido, estado, id_agenda, id_profesional) VALUES(?,?,?,?,?)";
+            $query_insert = "INSERT INTO secretaria (nombre, apellido, estado, id_usuario, id_agenda, id_profesional) VALUES(?,?,?,?,?,?)";
             array_push($asistente, $agendaId, $profesionalId);
             $request_insert = $this->insert($query_insert, $asistente);
             return $request_insert;
@@ -49,4 +49,15 @@
             return $result;
         }
 
+        public function crearUsuario(array $usuario){
+            $query_insert = "INSERT INTO usuario(nombre, contrasena, rol) VALUES(?,?,?)";
+            $request_insert = $this->insert($query_insert, $usuario);
+            return $request_insert;
+        }
+
+        public function getExtistsUser(string $nombre){
+            $sql = "SELECT COUNT(*) AS count FROM usuario WHERE nombre ='".$nombre."'";
+            $result = $this->getExists($sql);
+            return $result;
+        }
     }
