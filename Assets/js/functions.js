@@ -218,6 +218,32 @@ function pacienteEliminar(){
     })
 }
 
+/*** FUNCIONES PARA CREAR NUEVO FECHA ***/
+$("#formFechaNuevo").submit(function(event){
+	event.preventDefault();
+	fechaNuevo();
+});
+
+function fechaNuevo(){
+	var datos = $("#formFechaNuevo").serialize(); //la f de FECHA ESTABA EN MINUSCULAL
+
+    let prueba = document.getElementById("txtfecha").value;
+	$.ajax({
+		type: "post",
+		url:"fecha/insertar",
+		data: datos,
+		success: function(resultado){
+			/*if(resultado > 0){
+                $('#modalFormFechaNuevo').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+                console.log(resultado);
+            }*/
+            console.log(resultado);
+		}
+	});
+}
 
 /*** FUNCIONES PARA CREAR NUEVO ASISTENTE ***/
 function openModalAsistenteNuevo(){
