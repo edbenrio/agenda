@@ -43,6 +43,8 @@
         
         public function actualizar(){
             $error = false;
+            $paciente = array();
+            $ficha = array($_POST["txtenfermedadesbaseEditar"],  $_POST["txtalergiaEditar"], $_POST["txtobservacionesEditar"]);
             
             empty($_POST["txtnombreEditar"]) ? $error = true : $paciente["txtnombreEditar"] = $_POST["txtnombreEditar"] ;
             empty($_POST["txtapellidoEditar"]) ? $error = true : $paciente["txtapellidoEditar"] = $_POST["txtapellidoEditar"] ;
@@ -61,8 +63,9 @@
             if ($error){
                 echo "Se deben completar todos los campos";
             }else{
-                $data = $this->model->updatePaciente($paciente, $id);
-                echo $data;
+                $paciente = $this->model->updatePaciente($paciente, $id);
+                $fichaEditada = $this->model->updateFicha($ficha, $id);
+                echo $fichaEditada;
             }
         }
 

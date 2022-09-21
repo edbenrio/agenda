@@ -17,7 +17,8 @@
         }
 
         public function getPaciente(string $id){
-            $query = "SELECT * FROM pacientes WHERE id =".$id." LIMIT 1" ;
+            //$query = "SELECT * FROM pacientes WHERE id =".$id." LIMIT 1" ;
+            $query = "SELECT p.id, p.nombre, p.apellido, p.estado, p.direccion, p.ciudad, p.barrio, p.telefono, p.email, f.enfermedades_base, f.alergias, f.observaciones FROM pacientes as p JOIN ficha as f ON f.id_paciente = p.id WHERE p.id = ". $id;
             $result = $this->select($query);
             return $result ;
         }
@@ -28,6 +29,12 @@
             $arrData = array( $paciente["txtnombreEditar"],$paciente["txtapellidoEditar"] , $paciente["txtcorreoEditar"], $paciente["txtdireccionEditar"], 
                 $paciente["txtciudadEditar"], $paciente["txtbarrioEditar"], $paciente["txttelefonoEditar"], $paciente["txtestadoEditar"]);
             $result = $this->update($sql, $arrData);
+            return $result;
+        }
+
+        public function updateFicha(array $ficha, int $id_paciente){
+            $sql = "UPDATE ficha SET enfermedades_base = ?, alergias = ?, observaciones = ? WHERE id_paciente =". $id_paciente;
+            $result = $this->update($sql, $ficha);
             return $result;
         }
 
