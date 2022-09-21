@@ -21,8 +21,8 @@
 					<div class="card-body">
 						<h5 class="card-title"><?= $asistente["nombre"]." ". $asistente["apellido"] ; ?></h5>
 						<p> <?= $asistente["estado"]; ?> </p>
-						<button class="btn btn-primary" type="button" onclick='openModalAsistenteEditar(<?= $asistente["id"]?>)'><i class="fa fa-plus-circle"></i> Editar</button>
-						<button class="btn btn-danger" type="button" onclick='openModalAsistenteEliminar(<?= $asistente["id"]?>)'><i class="fa fa-plus-circle"></i> Eliminar</button>
+						<button class="btn btn-primary" type="button" onclick='openModalAsistenteEditar(<?= $asistente["id"]?>)'> Editar</button>
+						<button class="btn btn-danger" type="button" onclick='openModalAsistenteEliminar(<?= $asistente["id"]?>)'> Eliminar</button>
 					</div>
 				</div>
 			<?php endforeach; ?>

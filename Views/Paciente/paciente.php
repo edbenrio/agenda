@@ -23,8 +23,8 @@
 						<p><?= $paciente["email"]; ?></p>
 						<p> <?= $paciente["direccion"].' - '. $paciente["ciudad"]; ?> </p>
 						<p> <?= $paciente["telefono"]; ?> </p>
-						<button class="btn btn-primary" type="button" onclick='openModalPacienteEditar(<?= $paciente["id"]?>)'><i class="fa fa-plus-circle"></i> Editar</button>
-						<button class="btn btn-danger" type="button" onclick='openModalPacienteEliminar(<?= $paciente["id"]?>)'><i class="fa fa-plus-circle"></i> Eliminar</button>
+						<button class="btn btn-primary" type="button" onclick='openModalPacienteEditar(<?= $paciente["id"]?>)'> Editar</button>
+						<button class="btn btn-danger" type="button" onclick='openModalPacienteEliminar(<?= $paciente["id"]?>)'> Eliminar</button>
 					</div>
 				</div>
 			<?php endforeach; ?>
