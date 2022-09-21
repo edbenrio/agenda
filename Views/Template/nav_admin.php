@@ -4,8 +4,8 @@
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?=media();?>/images/uploads/avatar.png"
             alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">Juan Gonzalez</p>
-            <p class="app-sidebar__user-designation">Médico Cirujano</p>
+            <p class="app-sidebar__user-name"><?= $_SESSION["usuario"] ?></p>
+            <p class="app-sidebar__user-designation"><?= $_SESSION["rol"] ?></p>
         </div>
     </div>
     <ul class="app-menu">

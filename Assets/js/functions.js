@@ -6,17 +6,39 @@ $("#formPrimerInicio").submit(function(event){
 
 function PrimerInicio(){
 	var datos = $("#formPrimerInicio").serialize();
-    console.log(datos);
 	$.ajax({
 		type: "post",
 		url:"registrar/insertar",
 		data: datos,
 		success: function(resultado){
-			if(resultado > 0){
-                $('#modalFormSanatorioNuevo').modal('hide');
-                location.reload();
+			if(resultado == true){
+                window.location.replace("dashboard");
             }else{
                 alert('Error: ' + resultado);
+                console.log(resultado);
+            }
+		}
+	});
+}
+
+/** LOGIN */
+$("#formLogin").submit(function(event){
+	event.preventDefault();
+	login();
+});
+
+function login(){
+    var datos = $("#formLogin").serialize();
+	$.ajax({
+		type: "post",
+		url:"login/nuevasession",
+		data: datos,
+		success: function(resultado){
+			if(resultado == true){
+                window.location.replace("dashboard");
+            }else{
+                alert('Error: ' + resultado);
+                console.log(resultado);
             }
 		}
 	});
@@ -127,6 +149,10 @@ $("#formPacienteNuevo").submit(function(event){
 	pacienteNuevo();
 });
 
+function openTabFicha(){
+    $('[href="#tabFicha"]').tab('show');
+}
+
 function pacienteNuevo(){
 	var datos = $("#formPacienteNuevo").serialize();
 	$.ajax({
@@ -162,9 +188,18 @@ function openModalPacienteEditar(id){ //no eliminar
             document.getElementById('txtciudadEditar').value = resultado.ciudad; 
             document.getElementById('txtestadoEditar').value = resultado.estado; 
             document.getElementById('txtcorreoEditar').value = resultado.email; 
-            document.getElementById('hiddenidEditar').value = resultado.id;         
+            document.getElementById('hiddenidEditar').value = resultado.id;     
+            
+            document.getElementById('txtenfermedadesbaseEditar').value = resultado.enfermedades_base;  
+            document.getElementById('txtalergiaEditar').value = resultado.alergias;  
+            document.getElementById('txtobservacionesEditar').value = resultado.observaciones;  
+
         }
 	});
+}
+
+function openTabFichaEditar(){
+    $('[href="#tabFichaEditar"]').tab('show');
 }
 
 $("#formPacienteEditar").submit(function(event){
@@ -257,7 +292,11 @@ $("#formAsistenteNuevo").submit(function(event){
 
 function asistenteNuevo(){
 	var datos = $("#formAsistenteNuevo").serialize();
-	$.ajax({
+    let contrasena = document.getElementById("txtcontrasena").value;
+    let verify = document.getElementById("txtcontrasenaverify").value;
+    console.log(contrasena+' '+verify);
+    if (contrasena == verify){
+        	$.ajax({
 		type: "post",
 		url:"asistente/insertar",
 		data: datos,
@@ -272,6 +311,10 @@ function asistenteNuevo(){
             }
 		}
 	});
+    }else{
+        alert('Las contraseñas no coinciden');
+    }
+
 }
 
 /*** FUNCIONES PARA EDITAR ASISTENTE *****/
