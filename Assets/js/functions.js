@@ -280,6 +280,32 @@ function fechaNuevo(){
 	});
 }
 
+/***FUNCIONES PARA CREAR NUEVO HORARIO */
+$("#formHorarioNuevo").submit(function(event){
+	event.preventDefault();
+	horarioNuevo();
+});
+
+function horarioNuevo(){
+	var datos = $("#formHorarioNuevo").serialize(); 
+
+	$.ajax({
+		type: "post",
+		url:"horario/insertar",
+		data: datos,
+		success: function(resultado){
+			/*if(resultado > 0){
+                $('#modalFormFechaNuevo').modal('hide');
+                location.reload();
+            }else{
+                alert('Error: ' + resultado);
+                console.log(resultado);
+            }*/
+            console.log(resultado);
+		}
+	});
+}
+
 /*** FUNCIONES PARA CREAR NUEVO ASISTENTE ***/
 function openModalAsistenteNuevo(){
     $('#modalFormAsistenteNuevo').modal('show');
