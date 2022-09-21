@@ -33,7 +33,7 @@
                     $profesional = $this->model->crearProfesional($profesional);
                     if($profesional > 0){
                         $profesional = $this->model->crearAgenda($profesional);  
-                        array_push($usuario, "doctor");                    
+                        array_push($usuario, "doctor", $idUsuario);                    
                         require_once('Controllers/Session.php');
                         $session = new Session();
                         $session->newSession($usuario);

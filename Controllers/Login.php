@@ -19,7 +19,7 @@
             if ($usuario){
                 if($_POST["txtcontrasena"] == $usuario->contrasena){
                     $user = array();
-                    array_push($user, $usuario->nombre, $usuario->contrasena, $usuario->rol);
+                    array_push($user, $usuario->nombre, $usuario->contrasena, $usuario->rol, $usuario->id);
                     require_once('Controllers/Session.php');
                     $session = new Session();
                     $session->newSession($user);

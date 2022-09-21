@@ -2,7 +2,6 @@
 class Session{
     public function __construct(){
         session_start();
-        //$this->checkUser(); 
     }
 
     public function checkUser(){
@@ -31,5 +30,6 @@ class Session{
     public function newSession(array $user){
         $_SESSION["usuario"] = $user[0];
         $_SESSION["rol"] = $user[2];
+        $_SESSION["id_user"]= $user[3];
     }
 }
