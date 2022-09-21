@@ -149,6 +149,10 @@ $("#formPacienteNuevo").submit(function(event){
 	pacienteNuevo();
 });
 
+function openTabFicha(){
+    $('[href="#tabFicha"]').tab('show');
+}
+
 function pacienteNuevo(){
 	var datos = $("#formPacienteNuevo").serialize();
 	$.ajax({

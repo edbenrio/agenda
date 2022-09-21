@@ -12,21 +12,25 @@
         public function insertar(){
             
             $error= false;
+            $paciente = array();
+            $ficha = array($_POST["txtenfermedadesbase"],  $_POST["txtalergia"], $_POST["txtobservaciones"]);
 
-            empty($_POST["txtnombre"]) ? $error = true : $paciente["txtnombre"] = $_POST["txtnombre"] ;
-            empty($_POST["txtapellido"]) ? $error = true : $paciente["txtapellido"] = $_POST["txtapellido"] ;
-            empty($_POST["txtestado"]) ? $error = true : $paciente["txtestado"] = $_POST["txtestado"] ;
-            empty($_POST["txtcorreo"]) ? $error = true : $paciente["txtcorreo"] = $_POST["txtcorreo"] ;
-            empty($_POST["txtdireccion"]) ? $error = true : $paciente["txtdireccion"] = $_POST["txtdireccion"] ;
-            empty($_POST["txtciudad"]) ? $error = true : $paciente["txtciudad"] = $_POST["txtciudad"] ;
-            empty($_POST["txtbarrio"]) ? $error = true : $paciente["txtbarrio"] = $_POST["txtbarrio"] ;
-            empty($_POST["txttelefono"]) ? $error = true : $paciente["txttelefono"] = $_POST["txttelefono"] ;
+            empty($_POST["txtnombre"]) ? $error = true : array_push($paciente, $_POST["txtnombre"]);
+            empty($_POST["txtapellido"]) ? $error = true : array_push($paciente, $_POST["txtapellido"]);
+            empty($_POST["txtestado"]) ? $error = true : array_push($paciente, $_POST["txtestado"]);
+            empty($_POST["txtcorreo"]) ? $error = true : array_push($paciente, $_POST["txtcorreo"]);
+            empty($_POST["txtdireccion"]) ? $error = true : array_push($paciente, $_POST["txtdireccion"]);
+            empty($_POST["txtciudad"]) ? $error = true : array_push($paciente, $_POST["txtciudad"]);
+            empty($_POST["txtbarrio"]) ? $error = true : array_push($paciente, $_POST["txtbarrio"]);
+            empty($_POST["txttelefono"]) ? $error = true : array_push($paciente, $_POST["txttelefono"]);
 
             if ($error){
                 echo "Se deben completar todos los campos";
             }else{
-                $resultado = $this->model->setPaciente($paciente);
-                echo $resultado;
+                $paciente = $this->model->setPaciente($paciente);
+                array_push($ficha, $paciente);
+                $ficha = $this->model->nuevaFicha($ficha);
+                echo $ficha;
             }
         }
 

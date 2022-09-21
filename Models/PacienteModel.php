@@ -5,10 +5,14 @@
         }
 
         public function setPaciente(array $paciente){
-            $query_insert = "INSERT INTO pacientes(nombre, apellido, email, direccion, ciudad, barrio, telefono, estado) VALUES(?,?,?,?,?,?,?,?)";
-            $arrData = array( $paciente["txtnombre"],$paciente["txtapellido"] , $paciente["txtcorreo"], $paciente["txtdireccion"], 
-                                $paciente["txtciudad"], $paciente["txtbarrio"], $paciente["txttelefono"], $paciente["txtestado"]);
-            $request_insert = $this->insert($query_insert, $arrData);
+            $query_insert = "INSERT INTO pacientes(nombre, apellido, estado, email, direccion, ciudad, barrio, telefono) VALUES(?,?,?,?,?,?,?,?)";
+            $request_insert = $this->insert($query_insert, $paciente);
+            return $request_insert;
+        }
+
+        public function nuevaFicha(array $ficha){
+            $query_insert = "INSERT INTO ficha(enfermedades_base, alergias, observaciones, id_paciente) VALUES(?,?,?,?)";
+            $request_insert = $this->insert($query_insert, $ficha);
             return $request_insert;
         }
 
