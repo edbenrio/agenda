@@ -4,10 +4,10 @@
             parent::__construct();
         }
 
-        public function setFecha(array $fecha){ //DECIA SETPACIENTE
+        public function setFecha(array $fecha){ 
             $query_insert = "INSERT INTO fecha(fecha,id_agenda) VALUES(?,?)";
-            $arrData = array($fecha["txtfecha"] , $this->ultimoIdAgenda());
-            $request_insert = $this->insert($query_insert, $arrData);
+            array_push($fecha, $this->ultimoIdAgenda());
+            $request_insert = $this->insert($query_insert, $fecha);
             return $request_insert;
         }
 
@@ -17,4 +17,9 @@
             return $result;
         }
 
+        public function getFechas(){
+            $query = "SELECT * FROM fecha";
+            $result = $this->select_all($query);
+            return $result;
+        }
     }
