@@ -28,14 +28,25 @@
         
         public function verfechas(){
             $fechas = $this->model->getFechas();
+            $fechayhora = $this->model->getFechaHora();
             $fechaEvent = array();
+            foreach ($fechayhora as $fh){
+                $tmpObj = new stdClass();
+                $datetime = new DateTime($fh["fecha"]." ".$fh["desde"]);
+                $tmpObj->start = $datetime->format(DateTime::ATOM);
+                $datetime = new DateTime($fh["fecha"]." ".$fh["hasta"]);
+                $tmpObj->end = $datetime->format(DateTime::ATOM);
+                array_push($fechaEvent, $tmpObj);
+            }
+            
             $hoy = date("Y-m-d");
             foreach ($fechas as $fecha){
                 $evento = new stdClass();
                 $evento->color = "#38761d";
                 if($fecha["fecha"] < $hoy) $evento->color = "#cc0000";
+                $evento->allDay = true;
                 $evento->start = $fecha["fecha"];
-                $evento->end = $fecha["fecha"];
+               // $evento->end = $fecha["fecha"];
                 $evento->display = "background";
                 array_push($fechaEvent, $evento);
             }

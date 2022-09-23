@@ -22,4 +22,10 @@
             return $result;
         }
 
+        public function getFechaId(string $fecha){
+            $sql = "SELECT id FROM fecha WHERE fecha= '".$fecha."' ORDER BY id DESC LIMIT 1";
+            $result = $this->getExists($sql);
+            return $result;
+        }
+
     }

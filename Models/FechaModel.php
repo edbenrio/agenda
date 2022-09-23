@@ -22,4 +22,10 @@
             $result = $this->select_all($query);
             return $result;
         }
+
+        public function getFechaHora(){
+            $query = "SELECT f.fecha, h.desde, h.hasta FROM fecha as f JOIN horario as h ON f.id = h.id_fecha";
+            $result = $this->select_all($query);
+            return $result;
+        }
     }

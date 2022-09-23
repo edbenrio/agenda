@@ -12,15 +12,21 @@
             
             $error= false;
             $horario = array();
+            $fecha ="";
 
             empty($_POST["txtdesde"]) ? $error = true : array_push($horario, $_POST["txtdesde"]);
             empty($_POST["txthasta"]) ? $error = true : array_push($horario, $_POST["txthasta"]);
 
-            array_push($horario, "1"); //TODO: VER ESTA PARTE COMO HACER PARA PASAR EL ID DE LA FECHA 
+            empty($_POST["hiddenIdHorarioNuevo"]) ? $error = true : $fecha = $_POST["hiddenIdHorarioNuevo"];
 
+            
             if ($error){
                 echo "Se deben completar todos los campos";
             }else{
+
+                $fechaId = $this->model->getFechaId($fecha);
+                array_push($horario, $fechaId); 
+                
                 $resultado = $this->model->setHorario($horario);
                 echo $resultado;
             }
