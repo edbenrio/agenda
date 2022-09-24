@@ -69,8 +69,8 @@ CREATE TABLE fecha (
     id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     fecha DATE NOT NULL,
     PRIMARY KEY(id),
-    id_agenda bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_agenda) REFERENCES agenda(id) 
+    id_sanatorio bigint(20) unsigned NOT NULL,
+    FOREIGN KEY(id_sanatorio) REFERENCES sanatorio(id) 
         ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 

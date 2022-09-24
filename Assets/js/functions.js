@@ -410,3 +410,20 @@ function asistenteEliminar(){
         }
     })
 }
+
+/** SELECCIONAR SANATORIO Y DEVOVER AGENDA */
+function setSanatorio(id){
+    let url = "agenda/setSanatorioId/"+ id;
+    $.ajax({
+        type: "post",
+        url: url,
+        success: function(){
+            window.location.replace("agenda/");
+           /* if(resultado > 0){
+                
+            }else{
+                alert('Error: ' + resultado);
+            }*/
+        }
+    })
+}

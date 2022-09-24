@@ -13,13 +13,15 @@
 
 	<div class="row min-vh-100 d-flex align-items-center justify-content-center ">
 		<?php foreach ($data as $sanatorio) : ?>
-			<div class="card text-center mx-2">
-				<div class="card-body">
-					<h5 class="card-title"><?= $sanatorio["nombre"]; ?></h5>
-					<a href="#" class="btn btn-primary">Ver</a>
+			<div class="card text-center mx-2 col-md-3 my-2">
+					<div class="card-body">
+						<h5 class="card-title"><?= $sanatorio["nombre"]; ?></h5>
+						<p><?= $sanatorio["mail"]; ?></p>
+						<p> <?= $sanatorio["direccion"].' - '. $sanatorio["ciudad"]; ?> </p>
+						<p> <?= $sanatorio["telefono"].' - '.$sanatorio["celular"]; ?> </p>
+						<button class="btn btn-primary" type="button" onclick='setSanatorio(<?= $sanatorio["id"]; ?>)'> ver</button>
+					</div>
 				</div>
-			</div>
-
 		<?php endforeach; ?>
 	</div>
 </main>

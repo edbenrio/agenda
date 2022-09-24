@@ -11,12 +11,15 @@
             $data["page_name"] = "rol_usuario";
             $this->views->getView($this, "fecha", $data);
         }
+
         public function insertar(){
             
             $error= false;
             $fecha = array();
+            $id_sanatorio = $_SESSION["id_sanatorio"];
 
             empty($_POST["hiddenIdFechaNueva"]) ? $error = true : array_push($fecha, $_POST["hiddenIdFechaNueva"]);
+            array_push($fecha, $id_sanatorio);
 
             if ($error){
                 echo "Se deben completar todos los campos";
@@ -27,7 +30,8 @@
         }              
         
         public function verfechas(){
-            $fechas = $this->model->getFechas();
+            $id_sanatorio = $_SESSION["id_sanatorio"];
+            $fechas = $this->model->getFechas($id_sanatorio);
             $fechayhora = $this->model->getFechaHora();
             $fechaEvent = array();
             foreach ($fechayhora as $fh){

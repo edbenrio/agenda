@@ -29,7 +29,9 @@
                 week: 'Semana',
                 month: 'Mes'
             },
-            events: "fecha/verfechas",
+            events: "/agenda/fecha/verfechas",
+            allDaySlot: false,
+            contentHeight:"auto",
             locale: 'es',
             dateClick: function(info) {
                 /***ESTA PARTE DETECTA EL CLICK */
@@ -47,8 +49,6 @@
                             document.getElementById('hiddenIdFechaNueva').value = info.dateStr; //SE ASIGNA LA FECHA A UN CAMPO OCULTO PARA DESPUES REGISTRAR
                             $('#modalFormFechaNueva').modal('show'); //SI NO EXISTE, SE ABRE UNA VENTANA EMERGENTE PARA REGISTRAR UNA NUEVA FECHA
                         }
-                    } else {
-                        console.log('clic en hora');
                     }
                 }
             },
@@ -59,6 +59,8 @@
                     let hoy = new Date();
                     let dateClicked = new Date(info.event.startStr);
                     dateClicked.toJSON().substring(0, 10) >= hoy.toJSON().substring(0, 10) ? deshabilitarnuevoHorarioButton(false) : deshabilitarnuevoHorarioButton(true);
+                }else{
+                    console.log(info)
                 }
             },
             customButtons: {
@@ -86,9 +88,10 @@
         var tmpFecha = document.getElementById("hiddenIdFechaNueva").value;
         $.ajax({
             type: "post",
-            url: "fecha/insertar",
+            url: "/agenda/fecha/insertar",
             data: datos,
             success: function(resultado) {
+                console.log(resultado);
                 $('#modalFormFechaNueva').modal('hide');
                 calendar.changeView('timeGridDay', fechaSelected);
                 checkToDisablenuevoHorarioButton();
@@ -111,9 +114,10 @@
     function getFechas() {
         $.ajax({
             type: "post",
-            url: "fecha/verfechas",
+            url: "/agenda/fecha/verfechas",
             dataType: "json",
             success: function(resfechas) {
+                console.log(resfechas);
                 fechas = resfechas;
             }
         });
@@ -162,11 +166,20 @@
             data: datos,
             success: function(resultado) {
                 console.log(resultado);
-                /*if (resultado > 0) {
+                if (resultado > 0) {
+                    let desde = document.getElementById("txtdesde").value;
+                    let hasta = document.getElementById("txthasta").value;
+                    let newEvent = {
+                        start: new Date(fechaSelected + " " + desde),
+                        end: new Date(fechaSelected + " " + hasta),
+                    }
+                    calendar.addEvent(newEvent);
+                    console.log();
+
                     $('#modalFormHorarioNuevo').modal('hide');
                 } else {
                     alert('Error: ' + resultado);
-                }*/
+                }
             }
         });
     }

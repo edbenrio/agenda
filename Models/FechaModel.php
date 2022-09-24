@@ -5,8 +5,7 @@
         }
 
         public function setFecha(array $fecha){ 
-            $query_insert = "INSERT INTO fecha(fecha,id_agenda) VALUES(?,?)";
-            array_push($fecha, $this->ultimoIdAgenda());
+            $query_insert = "INSERT INTO fecha(fecha,id_sanatorio) VALUES(?,?)";
             $request_insert = $this->insert($query_insert, $fecha);
             return $request_insert;
         }
@@ -17,8 +16,8 @@
             return $result;
         }
 
-        public function getFechas(){
-            $query = "SELECT * FROM fecha";
+        public function getFechas($id_sanatorio){
+            $query = "SELECT * FROM fecha WHERE id_sanatorio = ".$id_sanatorio;
             $result = $this->select_all($query);
             return $result;
         }
