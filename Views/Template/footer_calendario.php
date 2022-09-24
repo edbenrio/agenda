@@ -91,6 +91,7 @@
             success: function(resultado) {
                 $('#modalFormFechaNueva').modal('hide');
                 calendar.changeView('timeGridDay', fechaSelected);
+                checkToDisablenuevoHorarioButton();
                 tmpFecha = {
                     color: "#38761d",
                     display: "background",
