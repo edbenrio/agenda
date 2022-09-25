@@ -22,8 +22,8 @@
             return $result;
         }
 
-        public function getFechaHora(){
-            $query = "SELECT f.fecha, h.desde, h.hasta FROM fecha as f JOIN horario as h ON f.id = h.id_fecha";
+        public function getFechaHora($id_sanatorio){
+            $query = "SELECT f.fecha, h.desde, h.hasta FROM fecha as f JOIN horario as h ON f.id = h.id_fecha WHERE id_sanatorio = ".$id_sanatorio;
             $result = $this->select_all($query);
             return $result;
         }

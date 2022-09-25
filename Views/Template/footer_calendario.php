@@ -31,8 +31,17 @@
             },
             events: "/agenda/fecha/verfechas",
             allDaySlot: false,
-            contentHeight:"auto",
+            contentHeight: "auto",
             locale: 'es',
+            slotMinTime: "07:00",
+            slotMaxTime: "18:00",
+            slotDuration: '00:30:00',
+            slotLabelInterval: 30,
+            slotLabelFormat: {
+                hour: 'numeric',
+                minute: '2-digit',
+                meridiem: 'short'
+            },
             dateClick: function(info) {
                 /***ESTA PARTE DETECTA EL CLICK */
                 let hoy = new Date();
@@ -59,7 +68,7 @@
                     let hoy = new Date();
                     let dateClicked = new Date(info.event.startStr);
                     dateClicked.toJSON().substring(0, 10) >= hoy.toJSON().substring(0, 10) ? deshabilitarnuevoHorarioButton(false) : deshabilitarnuevoHorarioButton(true);
-                }else{
+                } else {
                     console.log('click en un horario')
                 }
             },
@@ -184,7 +193,7 @@
     }
 
     /***FUNCIONES DE CONSULTAS */
-    function nuevaConsulta(){
+    function nuevaConsulta() {
 
     }
 </script>

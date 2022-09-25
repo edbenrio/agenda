@@ -32,7 +32,7 @@
         public function verfechas(){
             $id_sanatorio = $_SESSION["id_sanatorio"];
             $fechas = $this->model->getFechas($id_sanatorio);
-            $fechayhora = $this->model->getFechaHora();
+            $fechayhora = $this->model->getFechaHora($id_sanatorio);
             $fechaEvent = array();
             foreach ($fechayhora as $fh){
                 $tmpObj = new stdClass();
