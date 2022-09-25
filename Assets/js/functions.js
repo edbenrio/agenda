@@ -188,6 +188,7 @@ function openModalPacienteEditar(id){ //no eliminar
             document.getElementById('txtciudadEditar').value = resultado.ciudad; 
             document.getElementById('txtestadoEditar').value = resultado.estado; 
             document.getElementById('txtcorreoEditar').value = resultado.email; 
+            document.getElementById('txtciEditar').value = resultado.ci; 
             document.getElementById('hiddenidEditar').value = resultado.id;     
             
             document.getElementById('txtenfermedadesbaseEditar').value = resultado.enfermedades_base;  

@@ -33,9 +33,16 @@
                                 <input class="form-control" type="text" id="txtdireccionEditar" name="txtdireccionEditar" placeholder="Dirección">
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label">Correo</label>
-                                <input class="form-control" type="text" id="txtcorreoEditar" name="txtcorreoEditar" placeholder="Correo">
+                            <div class="row">
+                                <div class="form-group col-md-7">
+                                    <label class="control-label">Correo</label>
+                                    <input class="form-control" type="text" id="txtcorreoEditar" name="txtcorreoEditar" placeholder="Correo">
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label class="control-label">CI</label>
+                                    <input class="form-control" type="text" id="txtciEditar" name="txtciEditar" placeholder="Número de documento">
+                                </div>
                             </div>
 
                             <div class="row">

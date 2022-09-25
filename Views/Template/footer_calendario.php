@@ -60,7 +60,7 @@
                     let dateClicked = new Date(info.event.startStr);
                     dateClicked.toJSON().substring(0, 10) >= hoy.toJSON().substring(0, 10) ? deshabilitarnuevoHorarioButton(false) : deshabilitarnuevoHorarioButton(true);
                 }else{
-                    console.log(info)
+                    console.log('click en un horario')
                 }
             },
             customButtons: {
@@ -83,6 +83,7 @@
         nuevaFecha();
     });
 
+    /*** FUNCIONES DE FECHA */
     function nuevaFecha() {
         var datos = $("#formFechaNueva").serialize();
         var tmpFecha = document.getElementById("hiddenIdFechaNueva").value;
@@ -117,7 +118,6 @@
             url: "/agenda/fecha/verfechas",
             dataType: "json",
             success: function(resfechas) {
-                console.log(resfechas);
                 fechas = resfechas;
             }
         });
@@ -149,6 +149,7 @@
         });
     }
 
+    /***FUNCIONES DE HORARIOS */
     function cerrarModalHorarioNuevo() {
         $('#modalFormHorarioNuevo').modal('hide');
     }
@@ -162,7 +163,7 @@
         var datos = $("#formHorarioNuevo").serialize();
         $.ajax({
             type: "post",
-            url: "horario/insertar",
+            url: "/agenda/horario/insertar",
             data: datos,
             success: function(resultado) {
                 console.log(resultado);
@@ -174,14 +175,17 @@
                         end: new Date(fechaSelected + " " + hasta),
                     }
                     calendar.addEvent(newEvent);
-                    console.log();
-
                     $('#modalFormHorarioNuevo').modal('hide');
                 } else {
                     alert('Error: ' + resultado);
                 }
             }
         });
+    }
+
+    /***FUNCIONES DE CONSULTAS */
+    function nuevaConsulta(){
+
     }
 </script>
 

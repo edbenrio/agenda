@@ -10,6 +10,7 @@ CREATE TABLE pacientes (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
     nombre varchar(50) COLLATE utf8_unicode_ci NOT NULL,
     apellido varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+    ci varchar(15) COLLATE utf8_unicode_ci NOT NULL,
     estado varchar(45) COLLATE utf8_unicode_ci NOT NULL,
     direccion varchar(200) COLLATE utf8_unicode_ci NOT NULL,
     ciudad varchar(50) COLLATE utf8_unicode_ci NOT NULL,

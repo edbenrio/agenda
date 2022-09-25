@@ -23,6 +23,7 @@
             empty($_POST["txtciudad"]) ? $error = true : array_push($paciente, $_POST["txtciudad"]);
             empty($_POST["txtbarrio"]) ? $error = true : array_push($paciente, $_POST["txtbarrio"]);
             empty($_POST["txttelefono"]) ? $error = true : array_push($paciente, $_POST["txttelefono"]);
+            empty($_POST["txtci"]) ? $error = true : array_push($paciente, $_POST["txtci"]);
 
             if ($error){
                 echo "Se deben completar todos los campos";
@@ -38,7 +39,12 @@
             $data = $this->model->getPaciente($id);
             $data = json_encode($data[0]);
             echo ($data);
-            
+        }
+
+        public function verpacienteporci($ci){
+            $data = $this->model->getPacienteByCi($ci);
+            $data = json_encode($data[0]);
+            echo ($data);
         }
         
         public function actualizar(){
@@ -46,14 +52,15 @@
             $paciente = array();
             $ficha = array($_POST["txtenfermedadesbaseEditar"],  $_POST["txtalergiaEditar"], $_POST["txtobservacionesEditar"]);
             
-            empty($_POST["txtnombreEditar"]) ? $error = true : $paciente["txtnombreEditar"] = $_POST["txtnombreEditar"] ;
-            empty($_POST["txtapellidoEditar"]) ? $error = true : $paciente["txtapellidoEditar"] = $_POST["txtapellidoEditar"] ;
-            empty($_POST["txtestadoEditar"]) ? $error = true : $paciente["txtestadoEditar"] = $_POST["txtestadoEditar"] ;
-            empty($_POST["txtcorreoEditar"]) ? $error = true : $paciente["txtcorreoEditar"] = $_POST["txtcorreoEditar"] ;
-            empty($_POST["txtdireccionEditar"]) ? $error = true : $paciente["txtdireccionEditar"] = $_POST["txtdireccionEditar"] ;
-            empty($_POST["txtciudadEditar"]) ? $error = true : $paciente["txtciudadEditar"] = $_POST["txtciudadEditar"] ;
-            empty($_POST["txtbarrioEditar"]) ? $error = true : $paciente["txtbarrioEditar"] = $_POST["txtbarrioEditar"] ;
-            empty($_POST["txttelefonoEditar"]) ? $error = true : $paciente["txttelefonoEditar"] = $_POST["txttelefonoEditar"] ;
+            empty($_POST["txtnombreEditar"]) ? $error = true : $paciente["txtnombreEditar"] = $_POST["txtnombreEditar"];
+            empty($_POST["txtapellidoEditar"]) ? $error = true : $paciente["txtapellidoEditar"] = $_POST["txtapellidoEditar"];
+            empty($_POST["txtestadoEditar"]) ? $error = true : $paciente["txtestadoEditar"] = $_POST["txtestadoEditar"];
+            empty($_POST["txtcorreoEditar"]) ? $error = true : $paciente["txtcorreoEditar"] = $_POST["txtcorreoEditar"];
+            empty($_POST["txtdireccionEditar"]) ? $error = true : $paciente["txtdireccionEditar"] = $_POST["txtdireccionEditar"];
+            empty($_POST["txtciudadEditar"]) ? $error = true : $paciente["txtciudadEditar"] = $_POST["txtciudadEditar"];
+            empty($_POST["txtbarrioEditar"]) ? $error = true : $paciente["txtbarrioEditar"] = $_POST["txtbarrioEditar"];
+            empty($_POST["txttelefonoEditar"]) ? $error = true : $paciente["txttelefonoEditar"] = $_POST["txttelefonoEditar"];
+            empty($_POST["txtciEditar"]) ? $error = true : $paciente["txtciEditar"] = $_POST["txtciEditar"];
 
             $id = 0;
             empty($_POST["hiddenIdEditar"]) ? $id = 0 : $id = $_POST["hiddenIdEditar"];
