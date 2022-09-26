@@ -18,14 +18,14 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label class="control-label">Duración</label>
+                            <label class="control-label">Duración de la cosulta</label>
                             <input class="form-control" type="time" id="txtduracion" name="txtduracion" placeholder="Duración en minutos">
                         </div>
                     </div>
                     <input type="hidden" id="hiddenIdPacienteConsultaNueva" name="hiddenIdPacienteConsultaNueva">
                     <input type="hidden" id="hiddenfechaConsultaNueva" name="hiddenfechaConsultaNueva">
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="cerrarModalConsultarNueva()">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" onclick="cerrarModalConsultaNueva()">Cancelar</button>
                         <button type="submit" class="btn btn-success">Crear</button>
                     </div>
                 </form>

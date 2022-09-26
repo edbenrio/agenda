@@ -29,7 +29,7 @@
                     $id_paciente = $this->model->getPacienteIdByCi($_POST["txtpacienteci"]);
                     if (!$id_paciente){
                         $error = true;
-                        echo 'Este paciente no existe, registrelo </br>';
+                        echo 'Este paciente no existe, regístrelo </br>';
                     }
                 }
             }else{
@@ -43,7 +43,7 @@
                 echo "Se deben completar todos los campos";
             }else{
                 array_push($consulta, 'En espera', $id_profesional, $id_paciente, $id_horario, $id_sanatorio );
-                $resultado = $this->model->setFecha($consulta);
+                $resultado = $this->model->setConsulta($consulta);
                 echo $resultado;
             }
         }

@@ -104,7 +104,7 @@ CREATE TABLE secretaria(
 CREATE TABLE consulta(
     id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     duracion TIME NOT NULL,
-    estado varchar(7) NOT NULL,
+    estado varchar(15) NOT NULL,
     PRIMARY KEY(id),
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)

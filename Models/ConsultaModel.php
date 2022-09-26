@@ -5,7 +5,7 @@
         }
 
         public function setConsulta(array $consulta){ 
-            $query_insert = "INSERT INTO consulta(duracion, estado, id_profesional, id_paciente, id_horario, id_sanatorio) VALUES(?,?)";
+            $query_insert = "INSERT INTO consulta(duracion, estado, id_profesional, id_paciente, id_horario, id_sanatorio) VALUES(?,?,?,?,?,?)";
             $request_insert = $this->insert($query_insert, $consulta);
             return $request_insert;
         }

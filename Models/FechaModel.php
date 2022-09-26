@@ -23,7 +23,13 @@
         }
 
         public function getFechaHora($id_sanatorio){
-            $query = "SELECT f.fecha, h.desde, h.hasta FROM fecha as f JOIN horario as h ON f.id = h.id_fecha WHERE id_sanatorio = ".$id_sanatorio;
+            $query = "SELECT f.fecha, h.desde, h.hasta, h.id as id_horario FROM fecha as f JOIN horario as h ON f.id = h.id_fecha WHERE id_sanatorio =".$id_sanatorio;
+            $result = $this->select_all($query);
+            return $result;
+        }
+
+        public function getConsultas(int $id_horario){
+            $query = "SELECT c.duracion, p.nombre, p.apellido FROM consulta AS c JOIN pacientes AS p ON c.id_paciente = p.id WHERE id_horario = " .$id_horario;
             $result = $this->select_all($query);
             return $result;
         }

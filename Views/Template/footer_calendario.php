@@ -19,7 +19,7 @@
         calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             headerToolbar: {
-                left: 'prev,next,today,nuevoHorario',
+                left: 'today,nuevoHorario',
                 center: 'title',
                 right: 'timeGridDay,dayGridMonth'
             },
@@ -37,6 +37,7 @@
             slotMaxTime: "23:00",
             slotDuration: '00:30:00',
             slotLabelInterval: 30,
+            expandRows: true,
             slotLabelFormat: {
                 hour: 'numeric',
                 minute: '2-digit',
@@ -62,14 +63,17 @@
                 }
             },
             eventClick: function(info) {
-                if (info.event.startStr.length < 11) {
-                    calendar.changeView('timeGridDay', info.event.startStr);
-                    checkToDisablenuevoHorarioButton()
-                    let hoy = new Date();
-                    let dateClicked = new Date(info.event.startStr);
-                    dateClicked.toJSON().substring(0, 10) >= hoy.toJSON().substring(0, 10) ? deshabilitarnuevoHorarioButton(false) : deshabilitarnuevoHorarioButton(true);
-                } else {
-                    $('#modalFormConsultaNueva').modal('show');
+                if (info.event.title=="" &&	getCalendarViewType() == 'timeGridDay') {
+                    if (info.event.startStr.length < 11) {
+                        calendar.changeView('timeGridDay', info.event.startStr);
+                        checkToDisablenuevoHorarioButton()
+                        let hoy = new Date();
+                        let dateClicked = new Date(info.event.startStr);
+                        dateClicked.toJSON().substring(0, 10) >= hoy.toJSON().substring(0, 10) ? deshabilitarnuevoHorarioButton(false) : deshabilitarnuevoHorarioButton(true);
+                    } else {
+                        $('#hiddenfechaConsultaNueva').val(fechaSelected);
+                        $('#modalFormConsultaNueva').modal('show');
+                    }
                 }
             },
             customButtons: {
@@ -182,6 +186,7 @@
                     let newEvent = {
                         start: new Date(fechaSelected + " " + desde),
                         end: new Date(fechaSelected + " " + hasta),
+                        backgroundColor : "rgba(0,155,80, 0.5)"
                     }
                     calendar.addEvent(newEvent);
                     $('#modalFormHorarioNuevo').modal('hide');
@@ -201,24 +206,40 @@
 
     function consultaNueva() {
         var datos = $('#formConsultaNueva').serialize();
-        console.log(datos);
+        $.ajax({
+            type: "post",
+            data: datos,
+            url: "/agenda/consulta/insertar",
+            success: function(resultado) {
+                if (resultado != 0) {
+                    location.reload();
+                } else {
+                    alert(resultado);
+                    console.log(resultado);
+                }
+            }
+        });
     }
 
-    function buscarPacientePorCi(){
+    function buscarPacientePorCi() {
         const ci = $('#txtpacienteci').val()
         $.ajax({
             type: "get",
             dataType: "json",
-            url: "/agenda/paciente/verpacienteporci/"+ci,
+            url: "/agenda/paciente/verpacienteporci/" + ci,
             success: function(resultado) {
-                if(resultado == false){
+                if (resultado == false) {
                     alert('Paciente no encontrador');
-                }else{
-                    alert('Paciente: '+resultado.nombre+' '+resultado.apellido);
+                } else {
+                    alert('Paciente: ' + resultado.nombre + ' ' + resultado.apellido);
                     $('#hiddenIdPacienteConsultaNueva').val(resultado.id);
                 }
             }
         });
+    }
+
+    function cerrarModalConsultaNueva() {
+        $('#modalFormConsultaNueva').modal('hide');
     }
 </script>
 
