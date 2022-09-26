@@ -180,3 +180,7 @@ CREATE TABLE receta (
     FOREIGN KEY(id_consulta) REFERENCES consulta(id)
         ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
+
+CREATE VIEW vista_consultas AS (
+  SELECT p.nombre, p.apellido, c.estado, f.fecha, h.desde, s.nombre as sanatorio FROM consulta AS c JOIN pacientes as p ON c.id_paciente = p.id JOIN sanatorio AS s ON s.id = c.id_sanatorio JOIN horario AS h ON h.id = c.id_horario JOIN fecha AS f ON f.id = h.id_fecha
+)

@@ -4,6 +4,12 @@
             parent::__construct();
         }
 
+        public function getConsultas(){
+            $sql = "SELECT * FROM vista_consultas";
+            $result = $this->select_all($sql);
+            return $result;
+        }
+
         public function setConsulta(array $consulta){ 
             $query_insert = "INSERT INTO consulta(duracion, estado, id_profesional, id_paciente, id_horario, id_sanatorio) VALUES(?,?,?,?,?,?)";
             $request_insert = $this->insert($query_insert, $consulta);

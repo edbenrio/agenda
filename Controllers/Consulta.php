@@ -5,10 +5,7 @@
         }
 
         public function consulta(){
-            $data["page_id"] = 2;
-            $data["page_tag"] = "Roles Usuario";
-            $data["page_title"] = "Roles Usuario <small>Tienda Virtual</small>";
-            $data["page_name"] = "rol_usuario";
+            $data = $this->model->getConsultas();
             $this->views->getView($this, "consulta", $data);
         }
 
