@@ -13,6 +13,7 @@
 	</div>
 <?php getModal('modalFechaNueva', null); 
 	getModal("modalHorarioNuevo", null);
+	getModal("modalConsultaNueva", null);
 ?>
 
 </main>

@@ -36,6 +36,7 @@
         }
 
         public function verpaciente($id){
+            $id = strClean($id);
             $data = $this->model->getPaciente($id);
             $data = json_encode($data[0]);
             echo ($data);
@@ -43,7 +44,7 @@
 
         public function verpacienteporci($ci){
             $data = $this->model->getPacienteByCi($ci);
-            $data = json_encode($data[0]);
+            $data = json_encode($data);
             echo ($data);
         }
         
@@ -60,7 +61,7 @@
             empty($_POST["txtciudadEditar"]) ? $error = true : $paciente["txtciudadEditar"] = $_POST["txtciudadEditar"];
             empty($_POST["txtbarrioEditar"]) ? $error = true : $paciente["txtbarrioEditar"] = $_POST["txtbarrioEditar"];
             empty($_POST["txttelefonoEditar"]) ? $error = true : $paciente["txttelefonoEditar"] = $_POST["txttelefonoEditar"];
-            empty($_POST["txtciEditar"]) ? $error = true : $paciente["txtciEditar"] = $_POST["txtciEditar"];
+            empty($_POST["txtciEditar"]) ? $error = true : $paciente["txtciEditar"] =strClean($_POST["txtciEditar"]) ;
 
             $id = 0;
             empty($_POST["hiddenIdEditar"]) ? $id = 0 : $id = $_POST["hiddenIdEditar"];

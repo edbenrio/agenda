@@ -33,8 +33,8 @@
             allDaySlot: false,
             contentHeight: "auto",
             locale: 'es',
-            slotMinTime: "07:00",
-            slotMaxTime: "18:00",
+            slotMinTime: "05:00",
+            slotMaxTime: "23:00",
             slotDuration: '00:30:00',
             slotLabelInterval: 30,
             slotLabelFormat: {
@@ -69,7 +69,7 @@
                     let dateClicked = new Date(info.event.startStr);
                     dateClicked.toJSON().substring(0, 10) >= hoy.toJSON().substring(0, 10) ? deshabilitarnuevoHorarioButton(false) : deshabilitarnuevoHorarioButton(true);
                 } else {
-                    console.log('click en un horario')
+                    $('#modalFormConsultaNueva').modal('show');
                 }
             },
             customButtons: {
@@ -193,8 +193,32 @@
     }
 
     /***FUNCIONES DE CONSULTAS */
-    function nuevaConsulta() {
 
+    $("#formConsultaNueva").submit(function(event) {
+        event.preventDefault();
+        consultaNueva();
+    });
+
+    function consultaNueva() {
+        var datos = $('#formConsultaNueva').serialize();
+        console.log(datos);
+    }
+
+    function buscarPacientePorCi(){
+        const ci = $('#txtpacienteci').val()
+        $.ajax({
+            type: "get",
+            dataType: "json",
+            url: "/agenda/paciente/verpacienteporci/"+ci,
+            success: function(resultado) {
+                if(resultado == false){
+                    alert('Paciente no encontrador');
+                }else{
+                    alert('Paciente: '+resultado.nombre+' '+resultado.apellido);
+                    $('#hiddenIdPacienteConsultaNueva').val(resultado.id);
+                }
+            }
+        });
     }
 </script>
 
