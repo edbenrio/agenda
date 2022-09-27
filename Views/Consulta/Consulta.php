@@ -1,5 +1,13 @@
 <?php headerAdmin(); ?>
 <main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1>
+                <i class="fa fa-hospital-o" aria-hidden="true"></i> Consultas <button class="btn btn-primary" type="button" onclick="setModal('modalFormAsistenteNuevo','show')"><i class="fa fa-plus-circle"></i> Nuevo</button>
+            </h1>
+            <!-- <p>Start a beautiful journey here</p> -->
+        </div>
+    </div>
     <div class="card px-4 py-3">
         <table class="table">
             <thead>
