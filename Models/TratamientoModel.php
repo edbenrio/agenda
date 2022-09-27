@@ -5,7 +5,7 @@
         }
 
         public function setTratamiento(array $tratamiento){
-            $query_insert = "INSERT INTO `tratamiento`(`descripcion`, `id_paciente`, `id_profesional`, `id_consulta`) VALUES(?,?,?,?,?)";
+            $query_insert = "INSERT INTO `tratamiento`(`descripcion`, `id_paciente`, `id_profesional`, `id_consulta`) VALUES(?,?,?,?)";
             $request_insert = $this->insert($query_insert, $tratamiento);
             return $request_insert;
         }
@@ -19,10 +19,11 @@
         }
 
         //TESTEAR
-        public function updateTratamiento(array $tratamiento, int $id){   
-            $sql = "UPDATE tratamiento SET descripcion = ?, id_paciente = ?, id_profesional = ? ,id_consulta = ? WHERE id =". $id;
-        
-            $arrData = array( $tratamiento["txtdescripcion"],$tratamiento["txtid_paciente"] , $tratamiento["txtid_profesional"], $tratamiento["txtid_consulta"]);
+        public function updateTratamiento(array $tratamiento, int $id){  
+            echo $id; 
+            $sql = "UPDATE tratamiento SET descripcion = ?, id_paciente = ?, id_profesional = ? ,id_consulta = ? WHERE id =".intval($id);
+            $arrData = array($tratamiento[0],$tratamiento[1] , $tratamiento[2], $tratamiento[3]);
+            echo $sql;
             $result = $this->update($sql, $arrData);
             return $result;
         }
