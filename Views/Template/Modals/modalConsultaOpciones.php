@@ -31,10 +31,11 @@
                         <label class="control-label">Tratamiento</label>
                         <textarea class="form-control" type="text" id="txtestadoEditar" name="txtestadoEditar" placeholder="Descripción del tratamiento"></textarea>
                     </div>
+                    <input type="hidden" id="hiddenConsultaOpciones" name="hiddenConsultaOpciones">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="cerrarModalHorarioNuevo()">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" onclick="setModal('modalConsultaOpciones','hide')">Cancelar</button>
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </form>

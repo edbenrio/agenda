@@ -430,7 +430,9 @@ function setSanatorio(id){
 }
 
 /**OPCIONES DE CONSULTA */
-function setOpcionesConsulta(id){
+function setOpcionesConsulta(id, estado){
+    $('#hiddenConsultaOpciones').val(id);
+    $('#selectEstadoConsulta').val(estado).change();
     setModal('modalConsultaOpciones','show');
 }
 
@@ -445,9 +447,8 @@ function consultaOpciones(){
         type: "post",
         data: datos,
         url: "consulta/actualizar",
-        success: function(resultado){
-            console.log(resultado);
+        success: function(){
+            location.reload();
         }
     })
-    console.log(datos);
 }

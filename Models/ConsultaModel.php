@@ -40,4 +40,10 @@
             return $result;
         }
 
+        public function setEstado(int $id, array $estado){
+            $sql = "UPDATE consulta SET estado = ? WHERE id =". $id;
+            $result = $this->update($sql, $estado);
+            return $result;
+        }
+
     }

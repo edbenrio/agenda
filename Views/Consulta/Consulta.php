@@ -3,7 +3,7 @@
     <div class="app-title">
         <div>
             <h1>
-                <i class="fa fa-hospital-o" aria-hidden="true"></i> Consultas <button class="btn btn-primary" type="button" onclick="setModal('modalFormAsistenteNuevo','show')"><i class="fa fa-plus-circle"></i> Nuevo</button>
+                <i class="fa fa-hospital-o" aria-hidden="true"></i> Consultas 
             </h1>
             <!-- <p>Start a beautiful journey here</p> -->
         </div>
@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <?php foreach ($data as $consulta) : ?>
-                    <tr onclick='setOpcionesConsulta(<?= $consulta["id_consulta"] ?>)' style="cursor: pointer;" 
+                    <tr onclick='setOpcionesConsulta(<?= $consulta["id_consulta"] ?>,  "<?= $consulta["estado"] ?>")' style="cursor: pointer;" 
                     class="
                         <?php
                         if ($consulta["estado"] == 'En espera') echo 'table-warning';

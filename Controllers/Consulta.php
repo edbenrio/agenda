@@ -46,6 +46,12 @@
         }
 
         public function actualizar(){
-            print_r($_POST);
+            $id_consulta = "";
+            $estado = array();
+            empty($_POST["hiddenConsultaOpciones"]) ? $error = true : $id_consulta = $_POST["hiddenConsultaOpciones"];
+            empty($_POST["selectEstadoConsulta"]) ? $error = true : array_push($estado,  $_POST["selectEstadoConsulta"]);
+            
+            $resultado = $this->model->setEstado($id_consulta, $estado);
+            return $resultado;
         }
     }
