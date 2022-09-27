@@ -44,4 +44,8 @@
                 echo $resultado;
             }
         }
+
+        public function actualizar(){
+            print_r($_POST);
+        }
     }
