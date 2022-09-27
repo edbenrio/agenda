@@ -14,11 +14,18 @@
             </thead>
             <tbody>
                 <?php foreach ($data as $consulta) : ?>
-                    <tr>
+                    <tr onclick='setOpcionesConsulta(<?= $consulta["id_consulta"] ?>)' style="cursor: pointer;" 
+                    class="
+                        <?php
+                        if ($consulta["estado"] == 'En espera') echo 'table-warning';
+                        if ($consulta["estado"] == 'Terminado') echo 'table-success';
+                        if ($consulta["estado"] == 'En proceso') echo 'table-primary';
+                        if ($consulta["estado"] == 'Cancelado') echo 'table-danger'
+                    ?>">
                         <td><?= $consulta["estado"] ?></td>
                         <td><?= $consulta["nombre"] ?></td>
                         <td><?= $consulta["apellido"] ?></td>
-                        <td><?= $consulta["fecha"] ?></td>
+                        <td><?= date("d-m-Y", strtotime($consulta["fecha"]));  ?></td>
                         <td><?= $consulta["desde"] ?></td>
                         <td><?= $consulta["sanatorio"] ?></td>
                     </tr>
@@ -27,5 +34,11 @@
         </table>
     </div>
 
+    <?php
+        getModal("modalConsultaOpciones", null);
+        footerAdmin();
+    ?>
+
 </main>
-<?php footerAdmin(); ?>
+
+

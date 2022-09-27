@@ -428,3 +428,26 @@ function setSanatorio(id){
         }
     })
 }
+
+/**OPCIONES DE CONSULTA */
+function setOpcionesConsulta(id){
+    setModal('modalConsultaOpciones','show');
+}
+
+$("#formModalConsultaOpciones").submit(function(event){
+	event.preventDefault();
+	consultaOpciones();
+});
+
+function consultaOpciones(){
+    var datos = $("#formModalConsultaOpciones").serialize();
+    $.ajax({
+        type: "post",
+        data: datos,
+        url: "consulta/actualizar",
+        success: function(resultado){
+            console.log(resultado);
+        }
+    })
+    console.log(datos);
+}
