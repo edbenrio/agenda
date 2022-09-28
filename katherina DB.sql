@@ -124,9 +124,6 @@ CREATE TABLE tratamiento (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
     descripcion longtext,
     PRIMARY KEY(id),
-    id_paciente bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_paciente) REFERENCES pacientes(id)
-		ON DELETE CASCADE ON UPDATE CASCADE,
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -139,9 +136,6 @@ CREATE TABLE diagnostico (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
     descripcion longtext,
     PRIMARY KEY(id),
-    id_paciente bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_paciente) REFERENCES pacientes(id)
-		ON DELETE CASCADE ON UPDATE CASCADE,
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -154,9 +148,6 @@ CREATE TABLE analisis (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
     descripcion longtext,
     PRIMARY KEY(id),
-    id_paciente bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_paciente) REFERENCES pacientes(id)
-		ON DELETE CASCADE ON UPDATE CASCADE,
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)
 		ON DELETE CASCADE ON UPDATE CASCADE,
@@ -169,10 +160,7 @@ CREATE TABLE analisis (
 CREATE TABLE receta (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
     descripcion longtext,
-    PRIMARY KEY(id),
-    id_paciente bigint(20) unsigned NOT NULL,
-    FOREIGN KEY(id_paciente) REFERENCES pacientes(id)
-		ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY(id),o
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)
 		ON DELETE CASCADE ON UPDATE CASCADE,

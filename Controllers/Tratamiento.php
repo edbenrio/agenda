@@ -15,8 +15,10 @@
 
             empty($_POST["txtdescripcion"]) ? $error = true : array_push($tratamiento, $_POST["txtdescripcion"]);
             empty($_POST["txtid_paciente"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_paciente"]));
-            empty($_POST["txtid_profesional"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_profesional"]));
             empty($_POST["txtid_consulta"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_consulta"]));
+            
+            $id_profesional = $this->model->getProfesioalId();
+            array_push($tratamiento, $id_profesional);
 
             if ($error){
                 echo "Se deben completar todos los campos";
