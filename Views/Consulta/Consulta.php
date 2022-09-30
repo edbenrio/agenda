@@ -1,5 +1,6 @@
 <?php headerAdmin(); ?>
 <main class="app-content">
+<<<<<<< HEAD
 <div class="app-title">
 		<div>
 			<h1>
@@ -13,6 +14,16 @@
 			<li class="breadcrumb-item"><a href="#">Clínicas</a></li>
 		</ul>
 	</div>
+=======
+    <div class="app-title">
+        <div>
+            <h1>
+                <i class="fa fa-hospital-o" aria-hidden="true"></i> Consultas 
+            </h1>
+            <!-- <p>Start a beautiful journey here</p> -->
+        </div>
+    </div>
+>>>>>>> 57a6fc4e4d7e8d4f23de489e3d75348bbb8438f1
     <div class="card px-4 py-3">
         <table class="table">
             <thead>
@@ -48,7 +59,6 @@
     </div>
 
     <?php
-        getModal("modalConsultaOpciones", null);
         footerAdmin();
     ?>
 
