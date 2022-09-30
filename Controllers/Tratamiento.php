@@ -5,8 +5,9 @@
         }
 
         public function tratamiento(){
-            $tratamiento = $this->model->getTratamientos();
-            $this->views->getView($this, "tratamiento", $tratamiento);
+            $tratamientos = $this->model->getTratamientos();
+            print_r($tratamientos);
+            //$this->views->getView($this, "tratamiento", $tratamiento);
         }
 
         public function insertar(){
@@ -14,7 +15,6 @@
             $tratamiento = array();
 
             empty($_POST["txtdescripcion"]) ? $error = true : array_push($tratamiento, $_POST["txtdescripcion"]);
-            empty($_POST["txtid_paciente"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_paciente"]));
             empty($_POST["txtid_consulta"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_consulta"]));
             
             $id_profesional = $this->model->getProfesioalId();
@@ -25,6 +25,10 @@
             }else{
                 $tratamiento = $this->model->setTratamiento($tratamiento);
                 echo $tratamiento;
+            }
+
+            if(!empty($_POST["txtdescripcion"])){
+                $tratamiento = array();
             }
         }
 

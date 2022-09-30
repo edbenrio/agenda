@@ -430,10 +430,11 @@ function setSanatorio(id){
 }
 
 /**OPCIONES DE CONSULTA */
-function setOpcionesConsulta(id, estado){
-    $('#hiddenConsultaOpciones').val(id);
+function setOpcionesConsulta(id){
+    window.location = "consulta/detalleconsulta/"+id;
+    /*$('#hiddenConsultaOpciones').val(id);
     $('#selectEstadoConsulta').val(estado).change();
-    setModal('modalConsultaOpciones','show');
+    setModal('modalConsultaOpciones','show');*/
 }
 
 $("#formModalConsultaOpciones").submit(function(event){
@@ -443,12 +444,23 @@ $("#formModalConsultaOpciones").submit(function(event){
 
 function consultaOpciones(){
     var datos = $("#formModalConsultaOpciones").serialize();
+    let url = $('#hiddenConsultaOpciones').val();
     $.ajax({
         type: "post",
         data: datos,
-        url: "consulta/actualizar",
-        success: function(){
-            location.reload();
+        url: url+"/insertar",
+        success: function(resultado){
+            console.log(resultado);
+           // location.reload();
         }
     })
+}
+
+function nuevaDescripcionConsulta(url){
+    $('#hiddenConsultaOpcionesUrl').val(url);
+    $('#modalDetalleConsultaTitle').text('Agregar '+ url)
+    $('#labelDetalleConsulta').text(url)
+    $('#labelDetalleConsulta').css('textTransform', 'capitalize');
+    $('#hiddenConsultaOpciones').val(url);
+    setModal('modalConsultaOpciones','show');
 }

@@ -5,7 +5,7 @@
         }
 
         public function setTratamiento(array $tratamiento){
-            $query_insert = "INSERT INTO `tratamiento`(`descripcion`, `id_paciente`, `id_profesional`, `id_consulta`) VALUES(?,?,?,?)";
+            $query_insert = "INSERT INTO `tratamiento`(`descripcion`, `id_consulta`, `id_profesional`) VALUES(?,?,?)";
             $request_insert = $this->insert($query_insert, $tratamiento);
             return $request_insert;
         }
@@ -29,8 +29,9 @@
         }
 
         public function getTratamientos(){
-            $sql = "SELECT t.id, t.descripcion, t.id_paciente, t.id_profesional, t.id_consulta, p.nombre, p.apellido, p.ci, p.estado, p.direccion, p.ciudad, p.barrio, p.telefono, p.email, pr.nombre, pr.apellido, pr.estado, pr.correo, pr.telefono, pr.id_usuario, c.duracion, c.estado, c.id_profesional, c.id_paciente, c.id_horario, c.id_sanatorio
-            FROM consulta AS c JOIN tratamiento AS t ON c.id=t.id_consulta JOIN profesional AS pr ON pr.id=t.id_profesional JOIN pacientes AS p ON p.id=t.id_paciente";
+            $sql = "SELECT * FROM tratamiento";
+           /* $sql = "SELECT t.id, t.descripcion, t.id_paciente, t.id_profesional, t.id_consulta, p.nombre, p.apellido, p.ci, p.estado, p.direccion, p.ciudad, p.barrio, p.telefono, p.email, pr.nombre, pr.apellido, pr.estado, pr.correo, pr.telefono, pr.id_usuario, c.duracion, c.estado, c.id_profesional, c.id_paciente, c.id_horario, c.id_sanatorio
+            FROM consulta AS c JOIN tratamiento AS t ON c.id=t.id_consulta JOIN profesional AS pr ON pr.id=t.id_profesional JOIN pacientes AS p ON p.id=t.id_paciente";*/
             $result = $this->select_all($sql);
             return $result;
         }

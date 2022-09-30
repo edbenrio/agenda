@@ -160,7 +160,7 @@ CREATE TABLE analisis (
 CREATE TABLE receta (
     id bigint(20) unsigned NOT NULL  AUTO_INCREMENT,
     descripcion longtext,
-    PRIMARY KEY(id),o
+    PRIMARY KEY(id),
     id_profesional bigint(20) unsigned NOT NULL,
     FOREIGN KEY(id_profesional) REFERENCES profesional(id)
 		ON DELETE CASCADE ON UPDATE CASCADE,

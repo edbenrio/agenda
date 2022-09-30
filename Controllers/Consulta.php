@@ -48,10 +48,40 @@
         public function actualizar(){
             $id_consulta = "";
             $estado = array();
+            $error = false;
             empty($_POST["hiddenConsultaOpciones"]) ? $error = true : $id_consulta = $_POST["hiddenConsultaOpciones"];
             empty($_POST["selectEstadoConsulta"]) ? $error = true : array_push($estado,  $_POST["selectEstadoConsulta"]);
             
-            $resultado = $this->model->setEstado($id_consulta, $estado);
-            return $resultado;
+            if($error){
+                echo 'Hay un error con los ID';
+            }else{
+                $resultado = $this->model->setEstado($id_consulta, $estado);
+                echo $resultado;
+
+                if($_POST["txtConsultaTratamiento"]){
+                    $id_profesional = $this->model->ultimoIdProfesional();
+                    $tratamiento = array($_POST["txtConsultaTratamiento"], $id_consulta, $id_profesional);
+                    $resultado = $this->model->setTratamiento($tratamiento);
+                    echo $resultado;
+                }
+            }
+        }
+
+        public function detalleconsulta($id){
+            $data = $this->model->getConsulta($id);
+
+            $tratamientos = $this->model->getTratamientos($id);
+            $data->tratamientos = $tratamientos;
+
+            $analisis = $this->model->getAnalisis($id);
+            $data->analisis = $analisis;
+
+            $recetas = $this->model->getRecetas($id);
+            $data->recetas = $recetas;
+
+            $diagnosticos = $this->model->getDiagnosticos($id);
+            $data->diagnosticos = $diagnosticos;
+
+            $this->views->getView($this, "detalleconsulta", $data);
         }
     }

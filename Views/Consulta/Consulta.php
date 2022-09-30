@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <?php foreach ($data as $consulta) : ?>
-                    <tr onclick='setOpcionesConsulta(<?= $consulta["id_consulta"] ?>,  "<?= $consulta["estado"] ?>")' style="cursor: pointer;" 
+                    <tr onclick='setOpcionesConsulta(<?= $consulta["id_consulta"] ?>)' style="cursor: pointer;" 
                     class="
                         <?php
                         if ($consulta["estado"] == 'En espera') echo 'table-warning';
@@ -43,7 +43,6 @@
     </div>
 
     <?php
-        getModal("modalConsultaOpciones", null);
         footerAdmin();
     ?>
 
