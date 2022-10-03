@@ -21,10 +21,8 @@
         //TESTEAR
         public function updateTratamiento(array $tratamiento, int $id){  
             echo $id; 
-            $sql = "UPDATE tratamiento SET descripcion = ?, id_paciente = ?, id_profesional = ? ,id_consulta = ? WHERE id =".intval($id);
-            $arrData = array($tratamiento[0],$tratamiento[1] , $tratamiento[2], $tratamiento[3]);
-            echo $sql;
-            $result = $this->update($sql, $arrData);
+            $sql = "UPDATE tratamiento SET descripcion = ? WHERE id =".intval($id);
+            $result = $this->update($sql, $tratamiento);
             return $result;
         }
 

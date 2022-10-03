@@ -432,9 +432,33 @@ function setSanatorio(id){
 /**OPCIONES DE CONSULTA */
 function setOpcionesConsulta(id){
     window.location = "consulta/detalleconsulta/"+id;
-    /*$('#hiddenConsultaOpciones').val(id);
-    $('#selectEstadoConsulta').val(estado).change();
-    setModal('modalConsultaOpciones','show');*/
+}
+
+function nuevaDescripcionConsulta(url){
+    $('#hiddenConsultaOpcionesUrl').val(url);
+    $('#modalDetalleConsultaTitle').text('Agregar '+ url)
+    $('#labelDetalleConsulta').text(url)
+    $('#labelDetalleConsulta').css('textTransform', 'capitalize');
+    setModal('modalConsultaOpciones','show');
+}
+
+function editarDescripcionConsulta(tratamiento, url){
+    $('#hiddenConsultaOpcionesUrl').val(url);
+    $('#modalDetalleConsultaTitle').text('Editar '+ url);
+    $('#labelDetalleConsulta').text(url);
+    $('#txtConsultaDescripcion').val(tratamiento.descripcion);
+    $('#hiddenConsultaOpcionesConsultaDescripcionId').val(tratamiento.id);
+    $('#labelDetalleConsulta').css('textTransform', 'capitalize');
+    setModal('modalConsultaOpciones','show');
+}
+
+function cerrarModalConsultaOpciones(){
+    $('#hiddenConsultaOpcionesUrl').val('');
+    $('#modalDetalleConsultaTitle').text('');
+    $('#labelDetalleConsulta').text('');
+    $('#txtConsultaDescripcion').val('');
+    $('#hiddenConsultaOpcionesConsultaDescripcionId').val('');
+    setModal('modalConsultaOpciones','hide');
 }
 
 $("#formModalConsultaOpciones").submit(function(event){
@@ -444,23 +468,42 @@ $("#formModalConsultaOpciones").submit(function(event){
 
 function consultaOpciones(){
     var datos = $("#formModalConsultaOpciones").serialize();
-    let url = $('#hiddenConsultaOpciones').val();
+    let url = $('#hiddenConsultaOpcionesUrl').val();
+    let idDescripcion = $('#hiddenConsultaOpcionesConsultaDescripcionId').val();
+    if(idDescripcion=='') url = url+"/insertar";
+    if(idDescripcion > 0) url = url+"/actualizar";
     $.ajax({
         type: "post",
         data: datos,
-        url: url+"/insertar",
+        url: "http://localhost/agenda/"+url,
         success: function(resultado){
-            console.log(resultado);
+            resultado > 0 ? location.reload() : alert(resultado);
            // location.reload();
         }
     })
 }
 
-function nuevaDescripcionConsulta(url){
-    $('#hiddenConsultaOpcionesUrl').val(url);
-    $('#modalDetalleConsultaTitle').text('Agregar '+ url)
-    $('#labelDetalleConsulta').text(url)
-    $('#labelDetalleConsulta').css('textTransform', 'capitalize');
-    $('#hiddenConsultaOpciones').val(url);
-    setModal('modalConsultaOpciones','show');
+function eliminarDescripcionConsulta(id, url){
+    $('#hiddenIdConsultaOpcionesEliminar').val(id);
+    $('#hiddenConsultaOpcionesUrlEliminar').val(url);
+    $('#modalEliminarOpcionesTitle').text('Eliminar '+url);
+    $('#modalEliminarOpcionesPregunta').text('¿Eliminar ' + url + "?");
+    setModal('modalFormConsultaOpcionesEliminar','show');
+}
+
+$("#modalFormConsultaOpcionesEliminar").submit(function(event){
+	event.preventDefault();
+	consultaOpcionesEliminar();
+});
+
+function consultaOpcionesEliminar(){
+    let id = $('#hiddenIdConsultaOpcionesEliminar').val();
+    let url = $('#hiddenConsultaOpcionesUrlEliminar').val();
+    $.ajax({
+        type: "post",
+        url: "http://localhost/agenda/" + url + "/eliminar/" + id,
+        success: function(resultado){
+            resultado > 0 ? location.reload() : alert(resultado);
+        }
+    })
 }

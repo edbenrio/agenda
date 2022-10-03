@@ -17,7 +17,7 @@
 				<?php if ($data->recetas) : ?>
 					<div class="alert alert-primary" role="alert">
 						<?php foreach ($data->recetas as $receta) : ?>
-							<p><?= $receta["descripcion"]  ?></p>
+							<p><?= $receta["descripcion"]?> <button><i class="fa fa-pencil" aria-hidden="true"></i></button> </p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
@@ -29,7 +29,7 @@
 				<?php if ($data->analisis) : ?>
 					<div class="alert alert-primary" role="alert">
 						<?php foreach ($data->analisis as $analisis) : ?>
-							<p><?= $analisis["descripcion"]  ?></p>
+							<p><?= $analisis["descripcion"]?> <button><i class="fa fa-pencil" aria-hidden="true"></i></button> </p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
@@ -40,7 +40,11 @@
 				<?php if ( $data->tratamientos) : ?>
 					<div class="alert alert-primary" role="alert">
 						<?php foreach ($data->tratamientos as $tratamiento) : ?>
-							<p><?= $tratamiento["descripcion"] ?></p>
+							<p>
+								<?= $tratamiento["descripcion"]?>
+								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($tratamiento));?>,"tratamiento")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $tratamiento['id'] ?>, 'tratamiento')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+							</p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
@@ -51,7 +55,7 @@
 				<?php if ($data->diagnosticos) : ?>
 					<div class="alert alert-primary" role="alert">
 						<?php foreach ($data->diagnosticos as $diagnostico) : ?>
-							<p><?= $diagnostico["descripcion"] ?></p>
+							<p><?= $diagnostico["descripcion"]?> <button><i class="fa fa-pencil" aria-hidden="true"></i></button> </p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
@@ -59,5 +63,8 @@
 		</div>
 
 </main>
-<?php getModal("modalConsultaOpciones", null);
-	 footerAdmin(); ?>
+<?php 
+	getModal("modalConsultaOpciones", $data);
+	getModal('modalConsultaOpcionesEliminar', null);
+	footerAdmin(); 
+	?>

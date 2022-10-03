@@ -31,16 +31,19 @@
                         <label class="control-label">Tratamiento</label>
                         <textarea class="form-control" type="text" id="txtConsultaTratamiento" name="txtConsultaTratamiento" placeholder="Descripción del tratamiento"></textarea>
                     </div> -->
+                    
 
                     <div class="form-group">
                         <label id="labelDetalleConsulta" class="control-label">Diagnóstico</label>
-                        <textarea class="form-control" type="text" id="txtConsultaDescripcion" name="txtConsultaDescripcion" placeholder="Descripción"></textarea>
+                        <textarea class="form-control" type="text" id="txtConsultaDescripcion" name="txtConsultaDescripcion" placeholder="Descripción" required></textarea>
                     </div>
-                    <input type="hidden" id="hiddenConsultaOpciones" name="hiddenConsultaOpciones">
+                    <input type="hidden" id="hiddenConsultaOpcionesUrl" name="hiddenConsultaOpcionesUrl">
+                    <input type="hidden" value="<?= $data->id_consulta?>" id="hiddenConsultaOpcionesConsultaId" name="hiddenConsultaOpcionesConsultaId">
+                    <input type="hidden" id="hiddenConsultaOpcionesConsultaDescripcionId" name="hiddenConsultaOpcionesConsultaDescripcionId">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="setModal('modalConsultaOpciones','hide')">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModalConsultaOpciones('modalConsultaOpciones','hide')">Cancelar</button>
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </form>

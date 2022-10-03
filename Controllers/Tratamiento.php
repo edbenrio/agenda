@@ -14,8 +14,8 @@
             $error= false;
             $tratamiento = array();
 
-            empty($_POST["txtdescripcion"]) ? $error = true : array_push($tratamiento, $_POST["txtdescripcion"]);
-            empty($_POST["txtid_consulta"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_consulta"]));
+            empty($_POST["txtConsultaDescripcion"]) ? $error = true : array_push($tratamiento, $_POST["txtConsultaDescripcion"]);
+            empty($_POST["hiddenConsultaOpcionesConsultaId"]) ? $error = true : array_push($tratamiento, intval($_POST["hiddenConsultaOpcionesConsultaId"]));
             
             $id_profesional = $this->model->getProfesioalId();
             array_push($tratamiento, $id_profesional);
@@ -43,15 +43,11 @@
             $error = false;
             $tratamiento = array();
             
-            empty($_POST["txtdescripcion"]) ? $error = true : array_push($tratamiento, $_POST["txtdescripcion"]);
-            empty($_POST["txtid_paciente"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_paciente"]));
-            empty($_POST["txtid_profesional"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_profesional"]));
-            empty($_POST["txtid_consulta"]) ? $error = true : array_push($tratamiento, intval($_POST["txtid_consulta"]));
+            empty($_POST["txtConsultaDescripcion"]) ? $error = true : array_push($tratamiento, $_POST["txtConsultaDescripcion"]);
+            //empty($_POST["hiddenConsultaOpcionesConsultaDescripcionId"]) ? $error = true : array_push($tratamiento, intval($_POST["hiddenConsultaOpcionesConsultaDescripcionId"]));
 
             $id = 0;
-            empty($_POST["hiddenIdEditar"]) ? $id = 0 : $id = $_POST["hiddenIdEditar"];
-
-            if ($id == 0) echo "Error en el id al editar ";
+            empty($_POST["hiddenConsultaOpcionesConsultaDescripcionId"]) ? $id = 0 : $id = $_POST["hiddenConsultaOpcionesConsultaDescripcionId"];
 
             if ($error){
                 echo "Se deben completar todos los campos";
