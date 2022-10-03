@@ -1,13 +1,18 @@
 <?php headerAdmin(); ?>
 <main class="app-content">
-    <div class="app-title">
-        <div>
-            <h1>
-                <i class="fa fa-hospital-o" aria-hidden="true"></i> Consultas 
-            </h1>
-            <!-- <p>Start a beautiful journey here</p> -->
-        </div>
-    </div>
+<div class="app-title">
+		<div>
+			<h1>
+			<i class="app-menu__icon fa fa-pencil-square-o" aria-hidden="true"></i> Consultas
+			</h1>
+			
+			<!-- <p>Start a beautiful journey here</p> -->
+		</div>
+		<ul class="app-breadcrumb breadcrumb">
+			<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+			<li class="breadcrumb-item"><a href="#">Clínicas</a></li>
+		</ul>
+	</div>
     <div class="card px-4 py-3">
         <table class="table">
             <thead>
