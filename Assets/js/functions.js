@@ -507,3 +507,17 @@ function consultaOpcionesEliminar(){
         }
     })
 }
+
+function cambiarEstadoConsulta(value, id){
+    if(value != 'Cambiar estado'){
+        let nuevoEstado = {selectEstadoConsulta: value};
+        $.ajax({
+            type: "post",
+            data: nuevoEstado,
+            url: "/agenda/consulta/actualizarestado/"+id,
+            success: function(resultado){
+                resultado == 1 ? location.reload() : alert(resultado);
+            }
+        })
+    }
+}

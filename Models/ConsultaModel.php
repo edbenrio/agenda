@@ -12,7 +12,7 @@
 
         public function getConsulta($id){
             $query = 
-            "SELECT c.id AS id_consulta, p.nombre AS nombre_paciente, p.apellido AS apellido_paciente, s.nombre AS nombre_sanatorio, h.desde AS hora, f.fecha FROM consulta as c 
+            "SELECT c.id AS id_consulta, c.estado, p.nombre AS nombre_paciente, p.apellido AS apellido_paciente, s.nombre AS nombre_sanatorio, h.desde AS hora, f.fecha FROM consulta as c 
             JOIN pacientes as p 
                 ON p.id = c.id_paciente
             JOIN horario AS h 
