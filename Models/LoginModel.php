@@ -15,4 +15,15 @@
             $result = $this->getOne($query);
             return $result;
         }
+
+        public function datosDeSession(){
+            session_start();
+            $query = "SELECT p.nombre, p.apellido, u.rol, u.nombre AS usuario FROM usuario AS u JOIN profesional AS p ON p.id_usuario = u.id WHERE u.id = ". $_SESSION["id_user"];
+            $result = $this->getOne($query);
+            if(!$result){
+                $query = "SELECT s.nombre, s.apellido, u.rol, u.nombre AS usuario FROM usuario AS u JOIN secretaria AS s ON s.id_usuario = u.id WHERE u.id = ". $_SESSION["id_user"];
+                $result = $this->getOne($query);
+            }
+            return $result;
+        }
     }

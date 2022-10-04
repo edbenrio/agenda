@@ -31,4 +31,9 @@
                 echo 'No existe el usuario';
             }
         }
+
+        public function datosdesession(){
+            $datosSession = $this->model->datosDeSession();
+            print_r(json_encode($datosSession));
+        }
     }

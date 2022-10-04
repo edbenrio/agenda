@@ -4,8 +4,8 @@
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="<?=media();?>/images/uploads/avatar.png"
             alt="User Image">
         <div>
-            <p class="app-sidebar__user-name"><?= $_SESSION["usuario"] ?></p>
-            <p class="app-sidebar__user-designation"><?= $_SESSION["rol"] ?></p>
+            <p class="app-sidebar__user-name"></p>
+            <p class="app-sidebar__user-designation"></p>
         </div>
     </div>
     <ul class="app-menu">
@@ -36,3 +36,17 @@
         </li>
     </ul>
 </aside>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $.ajax({
+            type: "get",
+            url: "/agenda/login/datosdesession",
+            dataType:"json",
+            success: function(res){
+                $('.app-sidebar__user-name').text(res.nombre + ' ' + res.apellido);
+                $('.app-sidebar__user-designation').text(res.rol);
+                $('.app-sidebar__user-designation').css('textTransform', 'capitalize');
+            }
+        })
+    });
+</script>
