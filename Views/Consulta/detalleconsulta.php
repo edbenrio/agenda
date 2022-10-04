@@ -35,8 +35,8 @@
 						<?php foreach ($data->analisis as $analisis) : ?>
 							<p>
 								<?= $analisis["descripcion"]?>
-								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($analisis));?>,"anali$analisis")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
-								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $analisis['id'] ?>, 'anali$analisis')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($analisis));?>,"analisis")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $analisis['id'] ?>, 'analisis')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
 							</p>
 						<?php endforeach; ?>
 					</div>
@@ -63,11 +63,7 @@
 				<?php if ($data->diagnosticos) : ?>
 					<div class="alert alert-primary" role="alert">
 						<?php foreach ($data->diagnosticos as $diagnostico) : ?>
-							<p>
-								<?= $diagnostico["descripcion"]?>
-								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($diagnostico));?>,"diga$diagnostico")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
-								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $diagnostico['id'] ?>, 'diga$diagnostico')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
-							</p>
+							<p><?= $diagnostico["descripcion"]?> <button><i class="fa fa-pencil" aria-hidden="true"></i></button> </p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
