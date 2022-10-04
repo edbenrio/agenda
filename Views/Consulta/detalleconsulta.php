@@ -35,22 +35,21 @@
 					</select>
 				</div>
 			</div>
-
+			
 			<div class="card my-2 p-3">
-				<h5>Recetas <button class="mx-2 btn btn-primary" onclick="nuevaDescripcionConsulta('receta')"><i class="fa fa-plus-circle"></i></button></h5>
-				<?php if ($data->recetas) : ?>
+				<h5>Diagnósticos <button class="mx-2 btn btn-primary" onclick="nuevaDescripcionConsulta('diagnostico')"><i class="fa fa-plus-circle"></i></button></h5>
+				<?php if ($data->diagnosticos) : ?>
 					<div class="alert alert-primary" role="alert">
-						<?php foreach ($data->recetas as $receta) : ?>
+						<?php foreach ($data->diagnosticos as $diagnostico) : ?>
 							<p>
-								<?= $receta["descripcion"] ?>
-								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($receta)); ?>,"receta")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
-								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $receta['id'] ?>, 'receta')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+								<?= $diagnostico["descripcion"] ?>
+								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($diagnostico)); ?>,"diagnostico")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $diagnostico['id'] ?>, 'diagnostico')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
 							</p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
 			</div>
-
 
 			<div class="card my-2 p-3">
 				<h5>Analisis <button class="mx-2 btn btn-primary" onclick="nuevaDescripcionConsulta('analisis')"><i class="fa fa-plus-circle"></i></button></h5>
@@ -83,19 +82,20 @@
 			</div>
 
 			<div class="card my-2 p-3">
-				<h5>Diagnósticos <button class="mx-2 btn btn-primary" onclick="nuevaDescripcionConsulta('diagnostico')"><i class="fa fa-plus-circle"></i></button></h5>
-				<?php if ($data->diagnosticos) : ?>
+				<h5>Recetas <button class="mx-2 btn btn-primary" onclick="nuevaDescripcionConsulta('receta')"><i class="fa fa-plus-circle"></i></button></h5>
+				<?php if ($data->recetas) : ?>
 					<div class="alert alert-primary" role="alert">
-						<?php foreach ($data->diagnosticos as $diagnostico) : ?>
+						<?php foreach ($data->recetas as $receta) : ?>
 							<p>
-								<?= $diagnostico["descripcion"] ?>
-								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($diagnostico)); ?>,"diagnostico")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
-								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $diagnostico['id'] ?>, 'diagnostico')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+								<?= $receta["descripcion"] ?>
+								<button class="btn ml-1 p-0 text-primary" onclick='editarDescripcionConsulta(<?php print_r(json_encode($receta)); ?>,"receta")'> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+								<button class="btn ml-1 p-0 text-danger" onclick="eliminarDescripcionConsulta(<?= $receta['id'] ?>, 'receta')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
 							</p>
 						<?php endforeach; ?>
 					</div>
 				<?php endif ?>
 			</div>
+
 		</div>
 		<style>
 			.tituloDetalleConsultaVerde {
