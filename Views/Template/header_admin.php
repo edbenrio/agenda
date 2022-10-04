@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    
-    <title><?= $data["page_title"] ?></title>
+   
+    <title><?= $data ?></title>
 
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="<?= media();?>/css/main.css">

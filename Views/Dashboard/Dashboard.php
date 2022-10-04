@@ -1,4 +1,4 @@
-<?php headerAdmin(); ?>
+<?php headerAdmin("Agenda Médica"); ?>
 <main class="app-content">
 	<div class="app-title">
 		<div>

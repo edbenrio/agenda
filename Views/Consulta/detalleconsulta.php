@@ -1,4 +1,4 @@
-<?php headerAdmin(); ?>
+<?php headerAdmin("Detalles de la consulta"); ?>
 <main class="app-content">
 	<div class="app-title  <?php
 							if ($data->estado == 'En espera') echo 'tituloDetalleConsultaAmarillo';

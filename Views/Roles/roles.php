@@ -1,5 +1,5 @@
 <?php 
-    headerAdmin($data); ?>
+    headerAdmin("Roles"); ?>
     <main class="app-content">
       <div class="app-title">
         <div>

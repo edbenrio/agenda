@@ -1,4 +1,4 @@
-<?php headerAdmin(); ?>
+<?php headerAdmin("Sanatorios"); ?>
 <main class="app-content">
 	<div class="app-title">
 		<div>
