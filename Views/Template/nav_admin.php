@@ -24,16 +24,18 @@
                 <i class="app-menu__icon fa fa-pencil-square-o" aria-hidden="true"></i><span class="app-menu__label">Consultas</span>
             </a>
         </li>
-        <li>
-            <a class="app-menu__item" href="<?= base_url(); ?>sanatorio">
-                <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Sanatorios</span>
-            </a>
-        </li>
-        <li>
-            <a class="app-menu__item" href="<?= base_url(); ?>asistente">
-                <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Asistentes</span>
-            </a>
-        </li>
+        <?php if($_SESSION["rol"]== "doctor"): ?>
+            <li>
+                <a class="app-menu__item" href="<?= base_url(); ?>sanatorio">
+                    <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Sanatorios</span>
+                </a>
+            </li>
+            <li>
+                <a class="app-menu__item" href="<?= base_url(); ?>asistente">
+                    <i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Asistentes</span>
+                </a>
+            </li>
+        <?php endif ?>
     </ul>
 </aside>
 <script>
