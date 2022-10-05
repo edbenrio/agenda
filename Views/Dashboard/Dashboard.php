@@ -2,7 +2,7 @@
 <main class="app-content">
 	<div class="app-title">
 		<div>
-			<h1><i class="fa fa-dashboard"></i> </h1>
+			<h1><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Agendamiento por Sanatorio </h1>
 			<!-- <p>Start a beautiful journey here</p> -->
 		</div>
 		<ul class="app-breadcrumb breadcrumb">
