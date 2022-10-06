@@ -29,7 +29,7 @@
         }
 
         public function getConsultas(int $id_horario){
-            $query = "SELECT c.duracion, p.nombre, p.apellido FROM consulta AS c JOIN pacientes AS p ON c.id_paciente = p.id WHERE id_horario = " .$id_horario;
+            $query = "SELECT c.duracion, p.nombre, p.apellido FROM consulta AS c JOIN pacientes AS p ON c.id_paciente = p.id WHERE id_horario = '".$id_horario."' ORDER BY c.id ASC";
             $result = $this->select_all($query);
             return $result;
         }
