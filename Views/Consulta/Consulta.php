@@ -21,7 +21,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Fecha</th>
-                    <th scope="col">Hora</th>
+                    <th scope="col">Inicio del turno</th>
                     <th scope="col">Sanatorio</th>
                 </tr>
             </thead>
