@@ -5,17 +5,7 @@
         }
 
         public function getConsultas(){
-            //$sql = "SELECT * FROM vista_consultas";  //TODO: SE CAMBIA LA VISTA POR CONSULTA PORQUE EL SERVER NO ACEPTA VISTAS
-            $sql = "SELECT c.id as id_consulta, p.nombre, p.apellido, c.estado, f.fecha, h.desde, s.nombre as sanatorio FROM consulta AS c
-                        JOIN pacientes as p 
-                            ON c.id_paciente = p.id 
-                        JOIN sanatorio AS s 
-                            ON s.id = c.id_sanatorio 
-                        JOIN horario AS h 
-                            ON h.id = c.id_horario 
-                        JOIN fecha AS f 
-                            ON f.id = h.id_fecha";
-                            
+            $sql = "SELECT * FROM vista_consultas";
             $result = $this->select_all($sql);
             return $result;
         }

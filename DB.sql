@@ -169,7 +169,6 @@ CREATE TABLE receta (
         ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-/* TODO: SE COMENTA PORQUE EL SERVER NO PERMITE VISTAS*/
-/*CREATE VIEW vista_consultas AS (
+CREATE VIEW vista_consultas AS (
   SELECT c.id as id_consulta, p.nombre, p.apellido, c.estado, f.fecha, h.desde, s.nombre as sanatorio FROM consulta AS c JOIN pacientes as p ON c.id_paciente = p.id JOIN sanatorio AS s ON s.id = c.id_sanatorio JOIN horario AS h ON h.id = c.id_horario JOIN fecha AS f ON f.id = h.id_fecha
-)*/
+)
