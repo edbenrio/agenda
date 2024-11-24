@@ -12,7 +12,7 @@ function PrimerInicio(){
 		data: datos,
 		success: function(resultado){
 			if(resultado == true){
-                window.location.replace("dashboard");
+                window.location.replace("Dashboard");
             }else{
                 alert('Error: ' + resultado);
                 console.log(resultado);
@@ -35,7 +35,7 @@ function login(){
 		data: datos,
 		success: function(resultado){
 			if(resultado == true){
-                window.location.replace("dashboard");
+                window.location.replace("Dashboard");
             }else{
                 alert('Error: ' + resultado);
                 console.log(resultado);
