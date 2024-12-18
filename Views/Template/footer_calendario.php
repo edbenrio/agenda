@@ -29,7 +29,7 @@
                 week: 'Semana',
                 month: 'Mes'
             },
-            events: "/agenda/fecha/verfechas",
+            events: "<?php echo base_url()?>fecha/verfechas",
             allDaySlot: false,
             contentHeight: "auto",
             locale: 'es',
@@ -102,7 +102,7 @@
         var tmpFecha = document.getElementById("hiddenIdFechaNueva").value;
         $.ajax({
             type: "post",
-            url: "/agenda/fecha/insertar",
+            url: "<?php echo base_url()?>fecha/insertar",
             data: datos,
             success: function(resultado) {
                 console.log(resultado);
@@ -128,7 +128,7 @@
     function getFechas() {
         $.ajax({
             type: "post",
-            url: "/agenda/fecha/verfechas",
+            url: "<?php echo base_url()?>fecha/verfechas",
             dataType: "json",
             success: function(resfechas) {
                 fechas = resfechas;
@@ -176,7 +176,7 @@
         var datos = $("#formHorarioNuevo").serialize();
         $.ajax({
             type: "post",
-            url: "/agenda/horario/insertar",
+            url: "<?php echo base_url()?>horario/insertar",
             data: datos,
             success: function(resultado) {
                 console.log(resultado);
@@ -209,7 +209,7 @@
         $.ajax({
             type: "post",
             data: datos,
-            url: "/agenda/consulta/insertar",
+            url: "<?php echo base_url()?>consulta/insertar",
             success: function(resultado) {
                 if (resultado != 0) {
                     location.reload();
@@ -226,7 +226,7 @@
         $.ajax({
             type: "get",
             dataType: "json",
-            url: "/agenda/paciente/verpacienteporci/" + ci,
+            url: "<?php echo base_url()?>paciente/verpacienteporci/" + ci,
             success: function(resultado) {
                 if (resultado == false) {
                     alert('Paciente no encontrador');

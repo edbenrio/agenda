@@ -475,7 +475,7 @@ function consultaOpciones(){
     $.ajax({
         type: "post",
         data: datos,
-        url: "http://localhost/agenda/"+url,
+        url: "<?= base_url(); ?>"+url,
         success: function(resultado){
             resultado > 0 ? location.reload() : alert(resultado);
            // location.reload();
@@ -501,7 +501,7 @@ function consultaOpcionesEliminar(){
     let url = $('#hiddenConsultaOpcionesUrlEliminar').val();
     $.ajax({
         type: "post",
-        url: "http://localhost/agenda/" + url + "/eliminar/" + id,
+        url: "<?= base_url(); ?>" + url + "/eliminar/" + id,
         success: function(resultado){
             resultado > 0 ? location.reload() : alert(resultado);
         }
@@ -514,7 +514,7 @@ function cambiarEstadoConsulta(value, id){
         $.ajax({
             type: "post",
             data: nuevoEstado,
-            url: "/agenda/consulta/actualizarestado/"+id,
+            url: "<?= base_url(); ?> consulta/actualizarestado/"+id,
             success: function(resultado){
                 resultado == 1 ? location.reload() : alert(resultado);
             }
