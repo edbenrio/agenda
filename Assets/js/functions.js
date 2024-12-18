@@ -1,3 +1,4 @@
+const base_url = "http://localhost/agenda/";
 /** PRIMER INICIO */
 $("#formPrimerInicio").submit(function(event){
 	event.preventDefault();
@@ -12,7 +13,7 @@ function PrimerInicio(){
 		data: datos,
 		success: function(resultado){
 			if(resultado == true){
-                window.location.replace("Dashboard");
+                window.location.replace("dashboard");
             }else{
                 alert('Error: ' + resultado);
                 console.log(resultado);
@@ -35,7 +36,7 @@ function login(){
 		data: datos,
 		success: function(resultado){
 			if(resultado == true){
-                window.location.replace("Dashboard");
+                window.location.replace("dashboard");
             }else{
                 alert('Error: ' + resultado);
                 console.log(resultado);
@@ -475,7 +476,7 @@ function consultaOpciones(){
     $.ajax({
         type: "post",
         data: datos,
-        url: "<?= base_url(); ?>"+url,
+        url: base_url+url,
         success: function(resultado){
             resultado > 0 ? location.reload() : alert(resultado);
            // location.reload();
@@ -501,7 +502,7 @@ function consultaOpcionesEliminar(){
     let url = $('#hiddenConsultaOpcionesUrlEliminar').val();
     $.ajax({
         type: "post",
-        url: "<?= base_url(); ?>" + url + "/eliminar/" + id,
+        url: base_url + url + "/eliminar/" + id,
         success: function(resultado){
             resultado > 0 ? location.reload() : alert(resultado);
         }
@@ -514,7 +515,7 @@ function cambiarEstadoConsulta(value, id){
         $.ajax({
             type: "post",
             data: nuevoEstado,
-            url: "<?= base_url(); ?> consulta/actualizarestado/"+id,
+            url: base_url + "consulta/actualizarestado/"+id,
             success: function(resultado){
                 resultado == 1 ? location.reload() : alert(resultado);
             }
