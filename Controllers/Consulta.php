@@ -6,7 +6,7 @@
 
         public function consulta(){
             $data = $this->model->getConsultas();
-            $this->views->getView($this, "consulta", $data);
+            $this->views->getView($this, "Consulta", $data);
         }
 
         public function insertar(){

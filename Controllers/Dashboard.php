@@ -12,7 +12,7 @@
            // require("./Models/Dashboard.php");
            // $this->getSanatorios();
             $sanatorio = $this->model->getSanatorios();
-            $this->views->getView($this, "dashboard", $sanatorio);
+            $this->views->getView($this, "Dashboard", $sanatorio);
 
         }
     }

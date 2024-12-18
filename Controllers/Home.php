@@ -10,7 +10,7 @@
                 $view = "Views/Registrar/registrar.php";
                 
             }else{
-                $view = "Views/Dashboard/dashboard.php";
+                $view = "Views/Dashboard/Dashboard.php";
                 $data = $this->model->getSanatorios();
                 //$this->views->getView($this, "dashboard", $sanatorio);
             }
